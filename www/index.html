@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <!--<link rel="stylesheet" href="css/index.css">-->
+        <link rel="stylesheet" href="css/mystyles.css">
+        <title>Hello World</title>
+    </head>
+    <body>
+        <h1 class="title">
+            Word practice
+          </h1>
+    
+          <div id="game-choose-language">
+            <p class="subtitle">Pick a languages</p>
+            <table class="table is-striped is-hoverable is-fullwidth">
+              <tbody id="game-choose-language-tbody">
+                <tr>
+                  <td>Japanese</td>
+                  <td>English</td>
+                </tr>
+                <tr>
+                  <td>Japanese</td>
+                  <td>English</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="game-choose-words">
+            <p class="subtitle">Choose words</p>
+            <table class="table is-striped is-hoverable is-fullwidth">
+              <tbody id="game-choose-words-tbody">
+                <tr>
+                  <td colspan="2"><input type="checkbox"> Unit 1</td>
+                </tr>
+                <tr>
+                  <td style="width: 5px"></td>
+                  <td><input type="checkbox"> 食べ（たべ</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="buttons">
+              <a id="game-choose-words-btn-back" class="button is-link">Go back to choose language</a>
+              <a id="game-choose-words-btn-start" class="button is-link">Start</a>
+            </div>
+          </div>
+          <div id="game-board">
+            <div class="level">
+              <div class="level-item has-text-centered">
+                <div class="word-card">
+                  <p id="source-hint1" class="heading">いけ</p>
+                  <p id="source-lang" class="title">行け this is a realy long word that never ends</p>
+                </div>
+              </div>
+            </div>
+            <div class="level">
+              <div class="level-item has-text-centered">
+                <div class="field">
+                  <div class="control">
+                    <input id="guess-input" class="input" type="text" placeholder="Input">
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+        </div>
+    
+        <div id="game-summary" style="display: none;">
+          <div class="level">
+            <div class="level-item has-text-centered">
+              <div class="word-card summary-correct">
+                <p class="heading">Correct</p>
+                <p id="game-summary-success" class="title">42</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div class="word-card summary-wrong">
+                <p class="heading">Wrong</p>
+                <p id="game-summary-wrong" class="title">2</p>
+              </div>
+            </div>
+          </div>
+          <div id="game-summary-word-list">
+          </div>
+          <div class="level-item has-text-centered">
+            <div class="buttons">
+              <a id="game-summary-btn-retry" class="button is-link">Retry</a>
+              <a id="game-summary-btn-start" class="button is-link">Back to start</a>
+            </div>
+          </div>
+    
+        </div>
+    
+        <script src="js/bundle.js"></script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

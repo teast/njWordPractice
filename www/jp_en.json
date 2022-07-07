@@ -1,0 +1,463 @@
+{
+    "source_iso": "jp",
+    "target_iso": "en",
+    "source": "Japanese",
+    "target": "English",
+    "versin": 1,
+    "groups": [
+        {
+            "name": "Lesson 1",
+            "words": [
+                {
+                    "source": "おはよう",
+                    "target": "good morning",
+                    "target_alternatives": [
+                        "morning"
+                    ]
+                },
+                {
+                    "source": "あお",
+                    "target": "blue"
+                },
+                {
+                    "source": "しろう",
+                    "target": "white"
+                },
+                {
+                    "source": "あか",
+                    "target": "red"
+                },
+                {
+                    "source": "いち",
+                    "target": "one",
+                    "target_alternatives": [
+                        "1"
+                    ]
+                },
+                {
+                    "source": "に",
+                    "target": "two",
+                    "target_alternatives": [
+                        "2"
+                    ]
+                },
+                {
+                    "source": "さん",
+                    "target": "three",
+                    "target_alternatives": [
+                        "3"
+                    ]
+                },
+                {
+                    "source": "よん",
+                    "target": "four",
+                    "target_alternatives": [
+                        "4"
+                    ]
+                },
+                {
+                    "source": "ご",
+                    "target": "five",
+                    "target_alternatives": [
+                        "5"
+                    ]
+                },
+                {
+                    "source": "ろく",
+                    "target": "six",
+                    "target_alternatives": [
+                        "6"
+                    ]
+                },
+                {
+                    "source": "なな",
+                    "target": "seven",
+                    "target_alternatives": [
+                        "7"
+                    ]
+                },
+                {
+                    "source": "はい",
+                    "target": "yes",
+                    "target_alternatives": [
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Lesson 2",
+            "words": [
+                {
+                    "source": "すし",
+                    "target": "sushi"
+                },
+                {
+                    "source": "やさい",
+                    "target": "vegetable"
+                },
+                {
+                    "source": "おさけ",
+                    "target": "alcohol"
+                },
+                {
+                    "source": "てりやき",
+                    "target": "teriyaki"
+                },
+                {
+                    "source": "あまい",
+                    "target": "sweet"
+                },
+                {
+                    "source": "ほしい",
+                    "target": "want"
+                },
+                {
+                    "source": "すき",
+                    "target": "like"
+                },
+                {
+                    "source": "のむ",
+                    "target": "drink",
+                    "target_alternatives": [
+                        "to drink"
+                    ]
+                },
+                {
+                    "source": "よむ",
+                    "target": "read"
+                }
+            ]
+        },
+        {
+            "name":"Lesson 3",
+            "words": [
+                {
+                    "source": "くもり",
+                    "target": "cloudy"
+                },
+                {
+                    "source": "はれ",
+                    "target": "sunny",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "ねこ",
+                    "target": "a cat",
+                    "target_alternatives": [
+                        "cat"
+                    ]                },
+                {
+                    "source": "とり",
+                    "target": "a bird",
+                    "target_alternatives": [
+                        "bird"
+                    ]
+                },
+                {
+                    "source": "へや",
+                    "target": "a room",
+                    "target_alternatives": [
+                        "room"
+                    ]
+                },
+                {
+                    "source": "いぬ",
+                    "target": "a dog",
+                    "target_alternatives": [
+                        "dog"
+                    ]
+                },
+                {
+                    "source": "いえ",
+                    "target": "a house",
+                    "target_alternatives": [
+                        "house"
+                    ]
+                },
+                {
+                    "source": "せなか",
+                    "target": "back",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "みみ",
+                    "target": "an ear",
+                    "target_alternatives": [
+                        "ear"
+                    ]
+                },
+                {
+                    "source": "め",
+                    "target": "eye",
+                    "target_alternatives": [
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Lesson 4",
+            "words": [
+                {
+                    "source": "おちゃ",
+                    "target": "green tea",
+                    "target_alternatives": [
+                        "tea"
+                    ]
+                },
+                {
+                    "source": "ちず",
+                    "target": "a telephone",
+                    "target_alternatives": [
+                        "telephone",
+                        "phone"
+                    ]
+                },
+                {
+                    "source": "でんわ",
+                    "target": "map",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "くだもの",
+                    "target": "fruit",
+                    "target_alternatives": [
+                        "fruits",
+                        "a fruit"
+                    ]
+                },
+                {
+                    "source": "かぜ",
+                    "target": "wind",
+                    "target_alternatives": [
+                    ]
+                },
+
+                {
+                    "source": "えもじ",
+                    "target": "emoji",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "ぎんこう",
+                    "target": "bank",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "なっとう",
+                    "target": "fermented soybeans",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "がっこう",
+                    "target": "school",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "はちい",
+                    "target": "eight",
+                    "target_alternatives": [
+                        "8"
+                    ]
+                },
+                {
+                    "source": "きゅう",
+                    "target": "nine",
+                    "target_alternatives": [
+                        "9"
+                    ]
+                },
+                {
+                    "source": "じゅう",
+                    "target": "ten",
+                    "target_alternatives": [
+                        "10"
+                    ]
+                },
+                {
+                    "source": "きっぷ",
+                    "target": "ticket",
+                    "target_alternatives": [
+                        "a ticket"
+                    ]
+                },
+                {
+                    "source": "きょう",
+                    "target": "today",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "まんが",
+                    "target": "manga",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "えんぴつ",
+                    "target": "a pencil",
+                    "target_alternatives": [
+                        "pencil",
+                        "an pencil",
+                        "pen",
+                        "a pen",
+                        "an pen"
+                    ]
+                },
+                {
+                    "source": "かばん",
+                    "target": "bag",
+                    "target_alternatives": [
+                        "a bag",
+                        "an bag",
+                        "bags"
+                    ]
+                },
+                {
+                    "source": "べんとう",
+                    "target": "a boxed lunch",
+                    "target_alternatives": [
+                        "boxed lunch"
+                    ]
+                },
+                {
+                    "source": "てんぷら",
+                    "target": "tempura",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "ひらがな",
+                    "target": "hiragana",
+                    "target_alternatives": [
+                    ]
+                }
+                
+            ]
+        },
+        {
+            "name":"Lesson 5",
+            "words": [
+                {
+                    "source": "よろしくお願いします",
+                    "hint1": "よろしくおねがいします",
+                    "source_alternatives": [
+                        "よろしくおねがいします",
+                        "よろしく",
+                        "yoroshikuonegaishimasu",
+                        "yoroshiku onegai shimasu"
+                    ],
+                    "target": "nice to meet you",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "こんばんは",
+                    "target": "good evening",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "さようなら",
+                    "source_alternatives": [
+                        "またね",
+                        "じゃあね"
+                    ],
+                    "target": "goodbye",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "じゃ",
+                    "source_alternatives": [
+                        "では"
+                    ],
+                    "target": "well",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "おやすみなさい",
+                    "target": "good night",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "ありがとう",
+                    "source_alternatives": [
+                        "どうも",
+                        "ありがとうございます"
+                    ],
+                    "target": "thank you",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "どういたしまして",
+                    "target": "you're welcome",
+                    "target_alternatives": [
+                        "you are welcome"
+                    ]
+                },
+                {
+                    "source": "どうぞ",
+                    "target": "here",
+                    "target_alternatives": [
+                        "here you are"
+                    ]
+                },
+                {
+                    "source": "先生",
+                    "hint1": "せんせい",
+                    "target": "teacher",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "こんにちは",
+                    "target": "hello",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "お願いします",
+                    "hint1": "おねがいします",
+                    "target": "please",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "ごめん",
+                    "target": "sorry",
+                    "target_alternatives": [
+                    ]
+                },
+                 {
+                    "source": "おはようございます",
+                    "target": "good morning",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "すみません",
+                    "target": "please excuse me",
+                    "target_alternatives": [
+                        "excuse me"
+                    ]
+                },
+                {
+                    "source": "こちらこそ",
+                    "target": "likewise",
+                    "target_alternatives": [
+                    ]
+                }
+          ]
+        }
+    ]
+}

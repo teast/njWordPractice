@@ -1,0 +1,31 @@
+@charset "utf-8";
+@import "~bulma/bulma";
+
+.word-card {
+    padding:20px;
+    border-radius: 0.25rem;
+    box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10);
+}
+
+.summary-correct {
+    background-color: #dfd;
+}
+
+.summary-wrong {
+    background-color: #fdd;
+}
+
+.level.summary-correct,
+.level.summary-wrong {
+    border-bottom: 1px solid #000
+}
+
+.summary-word-guess {
+    display: block;
+    padding: 2px;
+}
+
+.success-guess {
+    border: 1px solid #050;
+    border-radius: 0.25rem;
+}
