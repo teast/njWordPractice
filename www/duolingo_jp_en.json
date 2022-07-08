@@ -3,10 +3,11 @@
     "target_iso": "en",
     "source": "Japanese",
     "target": "English",
+    "description": "Based on duolingo lessons",
     "versin": 1,
     "groups": [
         {
-            "name": "Lesson 1",
+            "name": "Lesson 1 (Hiragana 1)",
             "words": [
                 {
                     "source": "おはよう",
@@ -85,7 +86,7 @@
             ]
         },
         {
-            "name": "Lesson 2",
+            "name": "Lesson 2 (Hiragana 2)",
             "words": [
                 {
                     "source": "すし",
@@ -129,7 +130,7 @@
             ]
         },
         {
-            "name":"Lesson 3",
+            "name":"Lesson 3 (Hiragana 3)",
             "words": [
                 {
                     "source": "くもり",
@@ -197,7 +198,7 @@
             ]
         },
         {
-            "name": "Lesson 4",
+            "name": "Lesson 4 (Hiragana 4)",
             "words": [
                 {
                     "source": "おちゃ",
@@ -342,11 +343,11 @@
             ]
         },
         {
-            "name":"Lesson 5",
+            "name":"Lesson 5 (Greetings)",
             "words": [
                 {
                     "source": "よろしくお願いします",
-                    "hint1": "よろしくおねがいします",
+                    "source_hint1": "よろしくおねがいします",
                     "source_alternatives": [
                         "よろしくおねがいします",
                         "よろしく",
@@ -414,7 +415,7 @@
                 },
                 {
                     "source": "先生",
-                    "hint1": "せんせい",
+                    "source_hint1": "せんせい",
                     "target": "teacher",
                     "target_alternatives": [
                     ]
@@ -427,7 +428,7 @@
                 },
                 {
                     "source": "お願いします",
-                    "hint1": "おねがいします",
+                    "source_hint1": "おねがいします",
                     "target": "please",
                     "target_alternatives": [
                     ]
@@ -458,6 +459,152 @@
                     ]
                 }
           ]
+        },
+        {
+            "name":"Lesson 6 (Katakana 1)",
+            "words":[
+                {
+                    "source": "メキシコ",
+                    "target": "mexico"
+                },
+                {
+                    "source": "カメラ",
+                    "target": "camera"
+                },
+                {
+                    "source": "アメリカ",
+                    "target": "america",
+                    "target_alternatives": [
+                        "us",
+                        "usa",
+                        "united states",
+                        "the united states"
+                    ]
+                },
+                {
+                    "source": "フィリピン",
+                    "target": "the philippines",
+                    "target_alternatives": [
+                        "philippines"
+                    ]
+                },
+                {
+                    "source": "エリカ",
+                    "target": "erika"
+                },
+                {
+                    "source": "マリオ",
+                    "target": "mario"
+                },
+                {
+                    "source": "アジア",
+                    "target": "asia"
+                },
+                {
+                    "source": "ローマ",
+                    "target": "rome"
+                },
+                {
+                    "source": "アフリカ",
+                    "target": "africa"
+                },
+                {
+                    "source": "ロシア",
+                    "target": "russia"
+                },
+                {
+                    "source": "ヨーロッパ",
+                    "target": "europe",
+                    "target_alternatives": [
+                        "eu"
+                    ]
+                },
+                {
+                    "source": "オーストラリア",
+                    "target": "australia"
+                },
+                {
+                    "source": "フランス",
+                    "target": "france"
+                },
+                {
+                    "source": "ジョン",
+                    "target": "john",
+                    "target_alternatives": [
+                        "jon"
+                    ]
+                },
+                {
+                    "source": "マリア",
+                    "target": "maria"
+                },
+                {
+                    "source": "イタリア",
+                    "target": "italy"
+                },
+                {
+                    "source": "イギリス",
+                    "target": "britain",
+                    "target_alternatives": [
+                        "uk",
+                        "the uk",
+                        "england"
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"Lesson 7 Intro 1)",
+            "words": [
+                {
+                    "source": "はじめまして",
+                    "target": "nice to meet you",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "言います",
+                    "source_hint1": "いいます",
+                    "target": "is called",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "学生",
+                    "source_hint1": "がくせい",
+                    "target": "student",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "出身",
+                    "source_hint1": "しゅっしん",
+                    "target": "origin",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "日本人",
+                    "source_hint1": "にほんじん",
+                    "target": "japanese",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "中国",
+                    "source_hint1": "ちゅうごくん",
+                    "target": "china",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "中国人",
+                    "source_hint1": "ちゅうごくんじん",
+                    "target": "chinese",
+                    "target_alternatives": [
+                    ]
+                }
+            ]
         }
     ]
 }

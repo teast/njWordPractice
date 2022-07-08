@@ -37,7 +37,7 @@ class WordPair implements IWordPair {
 
 export class LangReader {
     public async Load(json_content: string): Promise<ILangConfig> {
-        const result = await fetch('jp_en.json');
+        const result = await fetch('duolingo_jp_en.json');
         const json = await result.text();
         const config = <ILangConfig>JSON.parse(json);
         return config;
