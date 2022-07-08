@@ -554,7 +554,7 @@
             ]
         },
         {
-            "name":"Lesson 7 Intro 1)",
+            "name":"Lesson 7 (Intro 1)",
             "words": [
                 {
                     "source": "はじめまして",
@@ -603,6 +603,127 @@
                     "target": "chinese",
                     "target_alternatives": [
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Lesson 8 (Katakana 2)",
+            "words": [
+                {
+                    "source": "ロンドン",
+                    "target": "london"
+                },
+                {
+                    "source": "ワルシャワ",
+                    "target": "warsaw"
+                },
+                {
+                    "source": "エジプト",
+                    "target": "egypt"
+                },
+                {
+                    "source": "インド",
+                    "target": "india"
+                },
+                {
+                    "source": "インドネシア",
+                    "target": "indonesia"
+                },
+                {
+                    "source": "マドリード",
+                    "target": "madrid"
+                },
+                {
+                    "source": "アイルランド",
+                    "target": "ireland"
+                },
+                {
+                    "source": "ブラジル",
+                    "target": "brazil"
+                },
+                {
+                    "source": "ベルリン",
+                    "target": "berlin"
+                }
+            ]
+        },
+        {
+            "name": "Lesson 9 (Intro 2)",
+            "words": [
+                {
+                    "source": "もちろん",
+                    "target": "of course"
+                },
+                {
+                    "source": "話せます",
+                    "source_hint1": "はなせます",
+                    "target": "can speak"
+                },
+                {
+                    "source": "元気",
+                    "source_hint1": "げんき",
+                    "target": "well"
+                },
+                {
+                    "source": "ベトナム",
+                    "target": "vietnam"
+                },
+                {
+                    "source": "名前",
+                    "source_hint1": "おなまえ",
+                    "source_alternative": [
+                        "お名前",
+                        "おなまえ",
+                        "なまえ"
+
+                    ],
+                    "target": "name"
+                },
+                {
+                    "source": "僕",
+                    "source_hint1": "ぼく",
+                    "target": "I"
+                }
+            ]
+        },
+        {
+            "name": "Lesson 10 (Katakana 3)",
+            "words": [
+                {
+                    "source":"コロンビア",
+                    "target": "colombia"
+                },
+                {
+                    "source":"アムステルダム",
+                    "target": "amsterdam"
+                },
+                {
+                    "source":"カタカナ",
+                    "target": "katakana"
+                },
+                {
+                    "source":"カンヌ",
+                    "target": "cannes"
+                },
+                {
+                    "source":"ロサンゼルス",
+                    "target": "los angeles"
+                },
+                {
+                    "source":"ボストン",
+                    "target": "boston"
+                },
+                {
+                    "source":"アルゼンチン",
+                    "target": "argentina"
+                },
+                {
+                    "source":"ケニア",
+                    "target": "kenya"
+                },
+                {
+                    "source":"ヴぇねツィア",
+                    "target": "venice"
                 }
             ]
         }
