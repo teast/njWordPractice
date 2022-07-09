@@ -726,6 +726,417 @@
                     "target": "venice"
                 }
             ]
+        },
+        {
+            "name":"Lesson 11 (Food 1)",
+            "words": [
+                {
+                    "source": "肉",
+                    "source_hint1": "にく",
+                    "target": "meat"
+                },
+                {
+                    "source": "野菜",
+                    "source_hint1": "やさい",
+                    "target": "vegetable",
+                    "target_alternatives": [
+                        "vegetables"
+                    ]
+                },
+                {
+                    "source": "魚",
+                    "source_hint1": "さかな",
+                    "target": "fish"
+                },
+                {
+                    "source": "お茶",
+                    "source_hint1": "おちゃ",
+                    "target": "tea",
+                    "target_alternatives": [
+                        "green tea"
+                    ]
+                },
+                {
+                    "source": "ください",
+                    "target": "want"
+                },
+                {
+                    "source": "食べます",
+                    "source_hint1": "たべます",
+                    "target": "to eat",
+                    "target_alternatives": [
+                        "eat"
+                    ]
+                },
+                {
+                    "source": "水",
+                    "source_hint1": "みず",
+                    "source_alternatives": [
+                        "お水",
+                        "おみず"
+                    ],
+                    "target": "water"
+                },
+                {
+                    "source": "いただきます",
+                    "target": "let's eat",
+                    "target_alternatives": [
+                        "lets eat"
+                    ]
+                },
+                {
+                    "source": "パン",
+                    "target": "bread",
+                    "target_alternatives": [
+                        "the bread"
+                    ]
+                },
+                {
+                    "source": "ごちそうさま",
+                    "target": "thank you for the meal",
+                    "target_alternatives": [
+                        "thank you for the food"
+                    ]
+                },
+                {
+                    "source": "りんご",
+                    "target": "apple"
+                }
+            ]
+        },
+        {
+            "name":"Lesson 12 (Time)",
+            "words": [
+                {
+                    "source": "ゼロ",
+                    "target": "zero"
+                },
+                {
+                    "source": "一",
+                    "source_hint1": "いち",
+                    "target": "one",
+                    "target_alternatives": [
+                        "1"
+                    ]
+                },
+                {
+                    "source": "二",
+                    "source_hint1": "に",
+                    "target": "two",
+                    "target_alternatives": [
+                        "2"
+                    ]
+                },
+                {
+                    "source": "三",
+                    "source_hint1": "さん",
+                    "target": "three",
+                    "target_alternatives": [
+                        "3"
+                    ]
+                },
+                {
+                    "source": "四",
+                    "source_hint1": "よん",
+                    "target": "four",
+                    "target_alternatives": [
+                        "4"
+                    ]
+                },
+                {
+                    "source": "五",
+                    "source_hint1": "ご",
+                    "target": "five",
+                    "target_alternatives": [
+                        "5"
+                    ]
+                },
+                {
+                    "source": "六",
+                    "source_hint1": "ろく",
+                    "target": "six",
+                    "target_alternatives": [
+                        "6"
+                    ]
+                },
+                {
+                    "source": "七",
+                    "source_hint1": "なな",
+                    "target": "seven",
+                    "target_alternatives": [
+                        "7"
+                    ]
+                },
+                {
+                    "source": "八",
+                    "source_hint1": "はち",
+                    "target": "eight",
+                    "target_alternatives": [
+                        "8"
+                    ]
+                },
+                {
+                    "source": "九",
+                    "source_hint1": "きゅう",
+                    "target": "nine",
+                    "target_alternatives": [
+                        "9"
+                    ]
+                },
+                {
+                    "source": "十",
+                    "source_hint1": "じゅう",
+                    "target": "ten",
+                    "target_alternatives": [
+                        "10"
+                    ]
+                },
+
+                {
+                    "source": "零時",
+                    "target": "zero o'clock",
+                    "target_alternatives": [
+                        "zero",
+                        "0"
+                    ]
+                },
+                {
+                    "source": "一時",
+                    "source_hint1": "いちじ",
+                    "target": "one o'clock",
+                    "target_alternatives": [
+                        "one",
+                        "1"
+                    ]
+                },
+                {
+                    "source": "二時",
+                    "source_hint1": "にじ",
+                    "target": "two o'clock",
+                    "target_alternatives": [
+                        "two",
+                        "2"
+                    ]
+                },
+                {
+                    "source": "三時",
+                    "source_hint1": "さんじ",
+                    "target": "three o'clock",
+                    "target_alternatives": [
+                        "three",
+                        "3"
+                    ]
+                },
+                {
+                    "source": "四時",
+                    "source_hint1": "よじ",
+                    "target": "four o'clock",
+                    "target_alternatives": [
+                        "four",
+                        "4"
+                    ]
+                },
+                {
+                    "source": "五時",
+                    "source_hint1": "ごじ",
+                    "target": "five o'clock",
+                    "target_alternatives": [
+                        "five",
+                        "5"
+                    ]
+                },
+                {
+                    "source": "六時",
+                    "source_hint1": "ろくじ",
+                    "target": "six o'clock",
+                    "target_alternatives": [
+                        "six",
+                        "6"
+                    ]
+                },
+                {
+                    "source": "七時",
+                    "source_hint1": "しちじ",
+                    "target": "seven o'clock",
+                    "target_alternatives": [
+                        "seven",
+                        "7"
+                    ]
+                },
+                {
+                    "source": "八時",
+                    "source_hint1": "はちじ",
+                    "target": "eight o'clock",
+                    "target_alternatives": [
+                        "eight",
+                        "8"
+                    ]
+                },
+                {
+                    "source": "九時",
+                    "source_hint1": "くじ",
+                    "target": "nine o'clock",
+                    "target_alternatives": [
+                        "nine",
+                        "9"
+                    ]
+                },
+                {
+                    "source": "十時",
+                    "source_hint1": "じゅうじ",
+                    "target": "ten o'clock",
+                    "target_alternatives": [
+                        "ten",
+                        "10"
+                    ]
+                },
+                {
+                    "source": "０分",
+                    "source_hint1": "れいふん",
+                    "target": "zero minute",
+                    "target_alternatives": [
+                        "zero",
+                        "0"
+                    ]
+                },
+                {
+                    "source": "一分",
+                    "source_hint1": "いっぷん",
+                    "target": "one minute",
+                    "target_alternatives": [
+                        "one",
+                        "1"
+                    ]
+                },
+                {
+                    "source": "二分",
+                    "source_hint1": "にぷん",
+                    "target": "two minute",
+                    "target_alternatives": [
+                        "two",
+                        "2"
+                    ]
+                },
+                {
+                    "source": "三分",
+                    "source_hint1": "さんぷん",
+                    "target": "thre minute",
+                    "target_alternatives": [
+                        "three",
+                        "3"
+                    ]
+                },
+                {
+                    "source": "四分",
+                    "source_hint1": "よんぷん",
+                    "target": "four minute",
+                    "target_alternatives": [
+                        "four",
+                        "4"
+                    ]
+                },
+                {
+                    "source": "五分",
+                    "source_hint1": "ごぷん",
+                    "target": "five minute",
+                    "target_alternatives": [
+                        "five",
+                        "5"
+                    ]
+                },
+                {
+                    "source": "六分",
+                    "source_hint1": "ろっぷん",
+                    "target": "six minute",
+                    "target_alternatives": [
+                        "six",
+                        "6"
+                    ]
+                },
+                {
+                    "source": "七分",
+                    "source_hint1": "ななぷん",
+                    "target": "seven minute",
+                    "target_alternatives": [
+                        "seven",
+                        "7"
+                    ]
+                },
+                {
+                    "source": "八分",
+                    "source_hint1": "はっぷん",
+                    "target": "eight minute",
+                    "target_alternatives": [
+                        "eight",
+                        "8"
+                    ]
+                },
+                {
+                    "source": "九分",
+                    "source_hint1": "きゅうぷん",
+                    "target": "nine minute",
+                    "target_alternatives": [
+                        "nine",
+                        "9"
+                    ]
+                },
+                {
+                    "source": "十分",
+                    "source_hint1": "じゅっぷん",
+                    "target": "ten minute",
+                    "target_alternatives": [
+                        "ten",
+                        "10"
+                    ]
+                },
+
+                {
+                    "source": "分",
+                    "source_hint1": "ぷん",
+                    "source_alternatives": [
+                        "ふん"
+                    ],
+                    "target": "minute",
+                    "target_alternatives": [
+                        "minutes",
+                        "min"
+                    ]
+                },
+                {
+                    "source": "時",
+                    "source_hint1": "じ",
+                    "source_alternatives": [
+                    ],
+                    "target": "hour",
+                    "target_alternatives": [
+                        "hours"
+                    ]
+                },
+                {
+                    "source": "今",
+                    "source_hint1": "いま",
+                    "target": "now"
+                },
+                {
+                    "source": "ちょうど",
+                    "target": "exactly",
+                    "target_alternatives": [
+                        "sharp",
+                        "precisely"
+                    ]
+                },
+                {
+                    "source": "半",
+                    "source_hint1": "はん",
+                    "target": "half past",
+                    "target_alternatives": [
+                        "thirty",
+                        "half",
+                        "30"
+                    ]
+                }
+           ]
         }
+        
     ]
 }
