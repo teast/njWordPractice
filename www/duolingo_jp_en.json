@@ -1136,6 +1136,175 @@
                     ]
                 }
            ]
+        },
+        {
+            "name": "Lesson 13 (Routine)",
+            "words": [
+                {
+                    "source": "学校",
+                    "source_hint1": "がっこう",
+                    "source_alternatives": [
+                    ],
+                    "target": "school",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "ほろ",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "around",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "生きます",
+                    "source_hint1": "いきます",
+                    "source_alternatives": [
+                    ],
+                    "target": "to go",
+                    "target_alternatives": [
+                        "go",
+                        "go to"
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "",
+                    "target_alternatives": [
+                    ]
+                },
+            ]
         }
         
     ]
