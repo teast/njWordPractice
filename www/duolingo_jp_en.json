@@ -1150,7 +1150,7 @@
                     ]
                 },
                 {
-                    "source": "ほろ",
+                    "source": "ごろ",
                     "source_hint1": "",
                     "source_alternatives": [
                     ],
@@ -1170,74 +1170,79 @@
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "午前",
+                    "source_hint1": "ごぜん",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "a.m",
+                    "target_alternatives": [
+                        "am"
+                    ]
+                },
+                {
+                    "source": "零",
+                    "source_hint1": "れい",
+                    "source_alternatives": [
+                    ],
+                    "target": "twelve",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
+                    "source": "ねます",
                     "source_hint1": "",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "go to bed",
+                    "target_alternatives": [
+                        "sleep"
+                    ]
+                },
+                {
+                    "source": "ごご",
+                    "source_hint1": "",
+                    "source_alternatives": [
+                    ],
+                    "target": "p.m",
+                    "target_alternatives": [
+                        "pm"
+                    ]
+                },
+                {
+                    "source": "会社",
+                    "source_hint1": "かいしゃ",
+                    "source_alternatives": [
+                    ],
+                    "target": "company",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "起きます",
+                    "source_hint1": "おきます",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "get up",
+                    "target_alternatives": [
+                        "wake up",
+                        "wake"
+                    ]
+                },
+                {
+                    "source": "毎朝",
+                    "source_hint1": "まいあさ",
+                    "source_alternatives": [
+                    ],
+                    "target": "every morning",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "朝",
+                    "source_hint1": "あさ",
                     "source_alternatives": [
                     ],
-                    "target": "",
-                    "target_alternatives": [
-                    ]
-                },
-                {
-                    "source": "",
-                    "source_hint1": "",
-                    "source_alternatives": [
-                    ],
-                    "target": "",
-                    "target_alternatives": [
-                    ]
-                },
-                {
-                    "source": "",
-                    "source_hint1": "",
-                    "source_alternatives": [
-                    ],
-                    "target": "",
-                    "target_alternatives": [
-                    ]
-                },
-                {
-                    "source": "",
-                    "source_hint1": "",
-                    "source_alternatives": [
-                    ],
-                    "target": "",
-                    "target_alternatives": [
-                    ]
-                },
-                {
-                    "source": "",
-                    "source_hint1": "",
-                    "source_alternatives": [
-                    ],
-                    "target": "",
+                    "target": "morning",
                     "target_alternatives": [
                     ]
                 },
