@@ -1247,70 +1247,395 @@
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "日",
+                    "source_hint1": "にち",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "day",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "毎日",
+                    "source_hint1": "まいにち",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "every day",
+                    "target_alternatives": [
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Lesson 14 (Family 1)",
+            "words": [
+                {
+                    "source": "彼女",
+                    "source_hint1": "かのじょ",
+                    "source_alternatives": [
+                    ],
+                    "target": "her",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "姉妹",
+                    "source_hint1": "しまい",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "sisters",
+                    "target_alternatives": [
+                        "sister"
+                    ]
+                },
+                {
+                    "source": "彼",
+                    "source_hint1": "かれ",
+                    "source_alternatives": [
+                    ],
+                    "target": "he",
+                    "target_alternatives": [
+                        "his"
+                    ]
+                },
+                {
+                    "source": "お姉さん",
+                    "source_hint1": "おねえさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "sister",
+                    "target_alternatives": [
+                        "older sister"
+                    ]
+                },
+                {
+                    "source": "大学生",
+                    "source_hint1": "だいがくせい",
+                    "source_alternatives": [
+                    ],
+                    "target": "college student",
+                    "target_alternatives": [
+                        "a college student"
+                    ]
+                },
+                {
+                    "source": "誰",
+                    "source_hint1": "だれ",
+                    "source_alternatives": [
+                    ],
+                    "target": "who",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "高校生",
+                    "source_hint1": "こうこうせい",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "high school student",
+                    "target_alternatives": [
+                        "a high school student"
+                    ]
+                },
+                {
+                    "source": "私たち",
+                    "source_hint1": "わたしたち",
+                    "source_alternatives": [
+                    ],
+                    "target": "we",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "お母さん",
+                    "source_hint1": "おかあさん",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "mother",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "お元気",
+                    "source_hint1": "おげんき",
                     "source_alternatives": [
                     ],
-                    "target": "",
+                    "target": "how is",
+                    "target_alternatives": [
+                        "how are",
+                        "well"
+                    ]
+                },
+                {
+                    "source": "彼ら",
+                    "source_hint1": "かれら",
+                    "source_alternatives": [
+                    ],
+                    "target": "they",
                     "target_alternatives": [
                     ]
                 },
                 {
-                    "source": "",
-                    "source_hint1": "",
+                    "source": "家族",
+                    "source_hint1": "かぞく",
                     "source_alternatives": [
+                        "ご家族",
+                        "ごかぞく"
                     ],
-                    "target": "",
+                    "target": "family",
                     "target_alternatives": [
                     ]
                 },
+                {
+                    "source": "兄弟",
+                    "source_hint1": "きょうだい",
+                    "source_alternatives": [
+                    ],
+                    "target": "brothers",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "妹",
+                    "source_hint1": "いもうと",
+                    "source_alternatives": [
+                    ],
+                    "target": "younger sister",
+                    "target_alternatives": [
+                        "little sister",
+                        "sister"
+                    ]
+                },
+                {
+                    "source": "姉",
+                    "source_hint1": "あね",
+                    "source_alternatives": [
+                    ],
+                    "target": "sister (my own)",
+                    "target_alternatives": [
+                        "sister",
+                        "older sister"
+                    ]
+                },
+                {
+                    "source": "人",
+                    "source_hint1": "じん",
+                    "source_alternatives": [
+                    ],
+                    "target": "person",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "お兄さん",
+                    "source_hint1": "おにいさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "brother",
+                    "target_alternatives": [
+                        "older brother"
+                    ]
+                },
+                {
+                    "source": "兄",
+                    "source_hint1": "あに",
+                    "source_alternatives": [
+                    ],
+                    "target": "brother (my own)",
+                    "target_alternatives": [
+                        "brother",
+                        "older brother"
+                    ]
+                },
+                {
+                    "source": "弟さん",
+                    "source_hint1": "おとうとさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "younger brother",
+                    "target_alternatives": [
+                        "brother",
+                        "little brother"
+                    ]
+                },
+                {
+                    "source": "お子さん",
+                    "source_hint1": "おこさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "child",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "子供",
+                    "source_hint1": "こども",
+                    "source_alternatives": [
+                    ],
+                    "target": "child (my own)",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "両親",
+                    "source_hint1": "りょうじん",
+                    "source_alternatives": [
+                    ],
+                    "target": "parents",
+                    "target_alternatives": [
+                        "parent"
+                    ]
+                },
+                {
+                    "source": "お父さん",
+                    "source_hint1": "おとうさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "father",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "父",
+                    "source_hint1": "ちち",
+                    "source_alternatives": [
+                    ],
+                    "target": "father (my own)",
+                    "target_alternatives": [
+                        "father"
+                    ]
+                },
+                {
+                    "source": "母",
+                    "source_hint1": "はは",
+                    "source_alternatives": [
+                    ],
+                    "target": "mother (my own)",
+                    "target_alternatives": [
+                        "mother"
+                    ]
+                },
+                {
+                    "source": "お祖父さん",
+                    "source_hint1": "おじいさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "grandfather",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "祖父",
+                    "source_hint1": "そふ",
+                    "source_alternatives": [
+                    ],
+                    "target": "grandfather (my own)",
+                    "target_alternatives": [
+                        "grandfather"
+                    ]
+                },
+                {
+                    "source": "お祖母さん",
+                    "source_hint1": "おばあさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "grandmother",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "祖母",
+                    "source_hint1": "そぼ",
+                    "source_alternatives": [
+                    ],
+                    "target": "grandmother (my own)",
+                    "target_alternatives": [
+                        "grandmother"
+                    ]
+                },
+                {
+                    "source": "伯父さん",
+                    "source_hint1": "おじさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "uncle older than parent",
+                    "target_alternatives": [
+                        "uncle",
+                        "older uncle"
+                    ]
+                },
+                {
+                    "source": "叔父さん",
+                    "source_hint1": "おじさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "uncle younger than parent",
+                    "target_alternatives": [
+                        "uncle",
+                        "younger uncle"
+                    ]
+                },
+                {
+                    "source": "伯母さん",
+                    "source_hint1": "おばさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "aunt older than parent",
+                    "target_alternatives": [
+                        "aunt",
+                        "older aunt"
+                    ]
+                },
+                {
+                    "source": "叔母さん",
+                    "source_hint1": "おばさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "aunt younger than parent",
+                    "target_alternatives": [
+                        "aunt",
+                        "younger aunt"
+                    ]
+                },
+                {
+                    "source": "ご主人",
+                    "source_hint1": "ごしゅじん",
+                    "source_alternatives": [
+                    ],
+                    "target": "husband",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "夫",
+                    "source_hint1": "おっと",
+                    "source_alternatives": [
+                    ],
+                    "target": "husband (my own)",
+                    "target_alternatives": [
+                        "husband"
+                    ]
+                },
+                {
+                    "source": "奥さん",
+                    "source_hint1": "おくさん",
+                    "source_alternatives": [
+                    ],
+                    "target": "wife",
+                    "target_alternatives": [
+                    ]
+                },
+                {
+                    "source": "妻",
+                    "source_hint1": "つま",
+                    "source_alternatives": [
+                    ],
+                    "target": "wife (my own)",
+                    "target_alternatives": [
+                        "wife"
+                    ]
+                }
             ]
         }
-        
     ]
 }
