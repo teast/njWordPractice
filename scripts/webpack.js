@@ -39,8 +39,5 @@ module.exports = function(context) {
                 resolve();
             }
         }, 10);
-    }).then(_ => {
-        console.log('t', dst);
-    })
-
+    });
 }
