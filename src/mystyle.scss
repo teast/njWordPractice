@@ -14,11 +14,11 @@
 }
 
 .summary-correct {
-    background-color: #dfd;
+    background-color: var(--correct-color);
 }
 
 .summary-wrong {
-    background-color: #fdd;
+    background-color: var(--wrong-color);
 }
 
 .level.summary-correct,
@@ -32,6 +32,6 @@
 }
 
 .success-guess {
-    border: 1px solid #050;
+    border: 1px solid var(--correct-color);
     border-radius: 0.25rem;
 }
