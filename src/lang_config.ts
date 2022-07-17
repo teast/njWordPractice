@@ -1,4 +1,6 @@
 export interface ILangConfig {
+    name: string,
+    description: string,
     source_iso: string,
     target_iso: string,
     source: string,

@@ -7,6 +7,26 @@
     font-weight: bold;
 }
 
+.overlay-dialog {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.50);
+    z-index: 40;
+
+    > .overlay-container {
+        position: absolute;
+        z-index: 41;
+        max-width: 500px;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}
+
 .section {
     margin-top: 20px;
 }

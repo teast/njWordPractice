@@ -1,4 +1,5 @@
 import { ILanguagePick } from "../logic/lang_chooser";
+import { UIHelper } from "./ui_helper";
 
 export interface IPreGameGui {
     bind_language_picked(arg0: (index: number) => void): void;
@@ -46,7 +47,7 @@ export class LangChooserGui implements IPreGameGui {
         let t = <HTMLElement>ev.target;
 
         while(t) {
-            if (t.tagName == 'TR') {
+            if (t.tagName == 'DIV' && t.id.startsWith('language-button-')) {
                 break;
             }
 
@@ -55,28 +56,65 @@ export class LangChooserGui implements IPreGameGui {
 
         if (t == null) return;
 
-        // Found tr!
-        let index = parseInt(t.getAttribute('data-id'));
+        // Found div!
+        let index = parseInt(t.id.replace('language-button-', ''));
         if (isNaN(index) || index == null) return;
-        this._callback_language_picked(index);
+        UIHelper.show_dialog(document.getElementById(`language-dialog-${index}`));
     }
 
-    private build_language_row(language: ILanguagePick, index: number): HTMLTableRowElement {
-        const row = <HTMLTableRowElement>document.createElement('tr');
-        row.setAttribute('data-id', index.toString());
-            let td = document.createElement('td');
-            if (language.source in this._languages)
-                td.innerHTML = this._languages[language.source];
-            else
-                td.innerText = language.source;
-        row.appendChild(td);
-            td = document.createElement('td');
-            if (language.target in this._languages)
-                td.innerHTML = this._languages[language.target];
-            else
-                td.innerText = language.target;
-        row.appendChild(td);
+    private build_language_row(language: ILanguagePick, index: number): HTMLElement {
+        const name = UIHelper.fix_undefined(language.get_config().name);
+        const description = UIHelper.fix_undefined(language.get_config().description);
+        const source = UIHelper.fix_undefined(language.source in this._languages ? this._languages[language.source] : language.source);
+        const target = UIHelper.fix_undefined(language.target in this._languages ? this._languages[language.target] : language.target);
 
-        return row;
+        const html_button = `
+                <div class="button-plate" id="language-button-${index}">
+                    <p class="heading strong">${name}</p>
+                    <div class="language-circle">
+                    <span class="language">${source}</span>
+                    </div>
+                    <span class="language-equalizer">⬌</span>
+                    <div class="language-circle">
+                        <span class="language">${target}</span>
+                    </div>
+                </div>
+        `;
+        const html_dialog = `
+                <div class="popup-dialog" style="display: none" id="language-dialog-${index}">
+                    <div class="popup-border">
+                        <p class="title">${name}</p>
+                        <p>${description}</p>
+                        <div class="level-item has-text-centered">
+                            <div class="button-plate go">
+                                Go
+                            </div>
+                            <div class="button-plate cancel">
+                                Cancel
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `;
+
+        const btn = UIHelper.to_html(html_button);
+        const dlg = UIHelper.to_html(html_dialog);
+
+        const self = this;
+        dlg.onclick = (e) => {
+            const lst = (<HTMLElement>e.target).classList;
+            if (lst.contains('button-plate') && lst.contains('go')) {
+                UIHelper.hide_dialog();
+                this._callback_language_picked(index);
+            }
+            else if (lst.contains('button-plate') && lst.contains('cancel')) {
+                UIHelper.hide_dialog();
+            }
+        };
+
+        const e = document.createElement('div');
+        e.appendChild(btn);
+        e.appendChild(dlg);
+        return e;
     }
 }
