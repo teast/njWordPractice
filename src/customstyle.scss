@@ -25,7 +25,7 @@
     --correct-100: #afa;
 }
 
-html.dark {
+body.dark {
     --background-150: #665889;
     --background-125: #5d507c;
     --background-100: #554971;
@@ -43,7 +43,7 @@ html.dark {
 }
 
 @media (prefers-color-scheme: dark) {
-    html:not(.light) {
+    body:not(.light) {
         --background-150: #665889;
         --background-125: #5d507c;
         --background-100: #554971;

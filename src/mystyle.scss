@@ -1,6 +1,73 @@
 @charset "utf-8";
 @import "customstyle.scss";
-//@import "~bulma/bulma";
+
+// START OF NEW theme
+
+.section {
+    margin-top: 20px;
+}
+
+.button-plate {
+    padding:20px;
+    border-radius: 0.75rem;
+    box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10) /* todo: button-plate shadow/border*/;
+    background-color: #dcab6b /* todo: button-plate background */;
+    border: 1px solid #000 /* todo: button-plate border */;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    &:hover {
+        background-color: #d49849 /* todo: button-plate hover background*/;
+    }
+}
+
+.language-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(218, 218, 218); /* TODO: language-circle background */
+    border: 1px solid #000 /* todo: language-circle border */;
+    overflow: hidden;
+    text-align: left;
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+
+    span.language {
+        font-size: 30px;
+        position: relative;
+        left: 5px;
+        top: 2px;
+    }
+}
+
+.language-equalizer {
+    font-size: 30px;
+    position: relative;
+}
+
+
+
+.popup-dialog {
+    border-radius: 0.25rem /* TODO: dialog border radius*/;
+    box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10) /* TODO: dialog shadow etc */;
+    padding: 1px;
+    background-color: #80b5d0;
+
+    .popup-border {
+        border-radius: 0.25rem /* TODO: dialog border radius*/;
+        border: 2px solid #a9def9;
+        padding: 10px;
+    }
+}
+
+
+// END OF NEW theme
 
 .navbar-burger {
     margin-left: 0;

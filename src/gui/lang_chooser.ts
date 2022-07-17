@@ -9,10 +9,15 @@ export interface IPreGameGui {
 export class LangChooserGui implements IPreGameGui {
     private _callback_language_picked: (index: number) => void;
 
+    private _languages: {[lang:string]: string} = {};
+
     constructor() {
         let tbody = document.getElementById('game-choose-language-tbody');
         let self = this;
         tbody.addEventListener('click', (ev) => self._handle_click(ev));
+        this._languages['Japanese'] = '🇯🇵';
+        this._languages['English'] = '🇺🇸';
+        this._languages['Swedish'] = '🇸🇪';
     }
 
     public hide(): void {
@@ -60,10 +65,16 @@ export class LangChooserGui implements IPreGameGui {
         const row = <HTMLTableRowElement>document.createElement('tr');
         row.setAttribute('data-id', index.toString());
             let td = document.createElement('td');
-            td.innerText = language.source;
+            if (language.source in this._languages)
+                td.innerHTML = this._languages[language.source];
+            else
+                td.innerText = language.source;
         row.appendChild(td);
             td = document.createElement('td');
-            td.innerText = language.target;
+            if (language.target in this._languages)
+                td.innerHTML = this._languages[language.target];
+            else
+                td.innerText = language.target;
         row.appendChild(td);
 
         return row;

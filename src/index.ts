@@ -16,6 +16,19 @@ let game = new WordGame(langs.groups[0].words, gui);
 gui.start();
 */
 
+// BEGIN of JS-handler for dark theme check
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+toggleDarkTheme(prefersDark.matches);
+// Listen for changes to the prefers-color-scheme media query
+prefersDark.addEventListener('change', (mediaQuery) => toggleDarkTheme(mediaQuery.matches));
+// Add or remove the "dark" class based on if the media query matches
+function toggleDarkTheme(shouldAdd: boolean) {
+  console.log('going to toggle dark on body', shouldAdd);
+  //alert('going to toggle dark: ' + shouldAdd);
+  document.body.classList.toggle('dark', shouldAdd);
+}
+// END OF js-handler for dark theme check
+
 let lang_chooser = new LangChooser(new LangChooserGui(), new LangReader());
 let word_chooser = new WordChooser(new WordChooserGui());
 let game = new WordGame(new GuiGame());
