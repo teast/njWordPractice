@@ -24,6 +24,16 @@
         left: 50%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
+
+        @media screen and (max-width: 769px), print {
+            max-width: none;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            -ms-transform: none;
+            transform: none;
+        }
     }
 }
 
@@ -96,17 +106,27 @@
 
 
 .popup-dialog {
+    position: relative;
     border-radius: 0.75rem /* TODO: dialog border radius*/;
     box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10) /* TODO: dialog shadow etc */;
     padding: 1px;
     background-color: #80b5d0;
 
+    @media screen and (max-width: 769px), print {
+        height: 100%;
+    }
+
+
     .popup-border {
         border-radius: 0.75rem /* TODO: dialog border radius*/;
         border: 2px solid #a9def9 /* TODO: dialog border color */;
         padding: 10px;
+        height: 100%;
+        width: 100%;
+        position: relative;
     }
 }
+
 
 // END OF NEW theme
 
