@@ -110,7 +110,7 @@
     border-radius: 0.75rem /* TODO: dialog border radius*/;
     box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10) /* TODO: dialog shadow etc */;
     padding: 1px;
-    background-color: #80b5d0;
+    background-color: #80b5d0 /* TODO: dialog background color */;
 
     @media screen and (max-width: 769px), print {
         height: 100%;
@@ -118,15 +118,123 @@
 
 
     .popup-border {
+        position: relative;
         border-radius: 0.75rem /* TODO: dialog border radius*/;
         border: 2px solid #a9def9 /* TODO: dialog border color */;
         padding: 10px;
         height: 100%;
         width: 100%;
-        position: relative;
     }
 }
 
+.checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 0.15rem;
+    border: 1px solid #000 /* TODO: checkbox border color */;
+    color: #f00; /* TODO: checkbox color */;
+    font-size: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+
+    &[checked] {
+        &::before {
+            position: relative;
+            top: -6px;
+            left: 1px;
+            content: "✔";
+        }
+    }
+}
+.flex-container {
+    display: flex;
+
+    &.flex-between {
+        justify-content: space-between;
+    }
+
+    &.flex-row {
+        flex-direction: row;
+        > *:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+    &.flex-column {
+        flex-direction: column;
+        > *:not(:last-child) {
+            margin-bottom: 5px;
+        }
+    }
+
+    > * {
+        order: 5;
+    }
+
+    > .flex-space-2 {
+        flex-grow: 2;
+    }
+}
+
+.expander {
+    position: relative;
+    border-radius: 0.75rem /* TODO: expander border radius*/;
+    background-color: #80b5d0 /* TODO: expander background color */;
+    box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10) /* TODO: expander shadow etc */;
+    padding: 1px;
+
+    > .expander-inner {
+        position: relative;
+        border-radius: 0.75rem /* TODO: expander inner border radius*/;
+        border: 6px solid #a9def9 /* TODO: expander inner border color */;
+        padding-top: 6px;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+
+        > *:not(.expander-content) {
+            margin-left: 6px;
+            margin-right: 6px;
+        }
+    }
+
+    .expander-content {
+        position: relative;
+        display: none;
+        background-color: #a9def9;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 6px;
+    }
+
+    &.expanded {
+        .expander-content {
+            display: block;
+        }
+    }
+}
+
+.word-list {
+    .flex-container {
+        cursor: pointer;
+
+        span:nth-child(2) {
+            min-width: 50%;
+        }
+
+        &:hover {
+            background-color: #80b5d0 /* TODO: word-list odd color */;
+        }
+
+        &:nth-of-type(odd) {
+            background-color: #a9def9 /* TODO: word-list even color */;
+        }
+        &:nth-of-type(even) {
+            background-color: #80b5d0 /* TODO: word-list odd color */;
+        }
+    }
+
+}
 
 // END OF NEW theme
 

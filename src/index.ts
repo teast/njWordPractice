@@ -29,6 +29,55 @@ function toggleDarkTheme(shouldAdd: boolean) {
 }
 // END OF js-handler for dark theme check
 
+// Checkbox handler
+document.body.addEventListener('click', (e) => {
+  const checkbox = <HTMLElement>e.target;
+
+  if (checkbox.classList.contains('checkbox')) {
+    e.stopPropagation();
+    
+    if (checkbox.getAttribute('checked') == undefined)
+      checkbox.setAttribute('checked', '');
+    else
+      checkbox.removeAttribute('checked');
+  }
+});
+
+// Expander handler
+document.body.addEventListener('click', (e) => {
+  var el = <HTMLElement>e.target;
+
+  while (el != null) {
+    if (el.classList.contains('checkbox')) {
+      el = null;
+      break;
+    }
+
+    if (el.classList.contains('expander-content')) {
+      el = null;
+      break;
+    }
+
+    if (el.classList.contains('expander-inner')) break;
+    el = el.parentElement;
+  }
+
+  if (el == null) {
+    return;
+  }
+
+  if (el.classList.contains('expander-inner')) {
+    e.stopPropagation();
+    const p = el.parentElement;
+    if (p.classList.contains('expanded')) {
+      p.classList.remove('expanded');
+    }
+    else {
+      p.classList.add('expanded');
+    }
+  }
+});
+
 let lang_chooser = new LangChooser(new LangChooserGui(), new LangReader());
 let word_chooser = new WordChooser(new WordChooserGui());
 let game = new WordGame(new GuiGame());

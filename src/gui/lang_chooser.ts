@@ -59,6 +59,8 @@ export class LangChooserGui implements IPreGameGui {
         // Found div!
         let index = parseInt(t.id.replace('language-button-', ''));
         if (isNaN(index) || index == null) return;
+        ev.preventDefault();
+        ev.stopPropagation();
         UIHelper.show_dialog(document.getElementById(`language-dialog-${index}`));
     }
 
@@ -83,6 +85,8 @@ export class LangChooserGui implements IPreGameGui {
         dlg.style.display = 'none';
         dlg.id = `language-dialog-${index}`;
         dlg.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const lst = (<HTMLElement>e.target).classList;
             if (lst.contains('button-plate') && lst.contains('go')) {
                 UIHelper.hide_dialog();
