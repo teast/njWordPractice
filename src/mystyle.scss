@@ -96,20 +96,20 @@
 
 
 .popup-dialog {
-    border-radius: 0.25rem /* TODO: dialog border radius*/;
+    border-radius: 0.75rem /* TODO: dialog border radius*/;
     box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10) /* TODO: dialog shadow etc */;
     padding: 1px;
     background-color: #80b5d0;
 
     .popup-border {
-        border-radius: 0.25rem /* TODO: dialog border radius*/;
-        border: 2px solid #a9def9;
+        border-radius: 0.75rem /* TODO: dialog border radius*/;
+        border: 2px solid #a9def9 /* TODO: dialog border color */;
         padding: 10px;
     }
 }
 
-
 // END OF NEW theme
+
 
 .navbar-burger {
     margin-left: 0;
@@ -119,7 +119,7 @@
 .word-card {
     padding:20px;
     border-radius: 0.25rem;
-    box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10);
+    box-shadow:0 0.5em 1em -0.125em rgba(10, 10, 10, 0.10) /* TODO: word-card shadow color */;
 }
 
 .summary-correct {

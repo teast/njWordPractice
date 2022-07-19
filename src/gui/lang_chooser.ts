@@ -68,39 +68,20 @@ export class LangChooserGui implements IPreGameGui {
         const source = UIHelper.fix_undefined(language.source in this._languages ? this._languages[language.source] : language.source);
         const target = UIHelper.fix_undefined(language.target in this._languages ? this._languages[language.target] : language.target);
 
-        const html_button = `
-                <div class="button-plate" id="language-button-${index}">
-                    <p class="heading strong">${name}</p>
-                    <div class="language-circle">
-                    <span class="language">${source}</span>
-                    </div>
-                    <span class="language-equalizer">⬌</span>
-                    <div class="language-circle">
-                        <span class="language">${target}</span>
-                    </div>
-                </div>
-        `;
-        const html_dialog = `
-                <div class="popup-dialog" style="display: none" id="language-dialog-${index}">
-                    <div class="popup-border">
-                        <p class="title">${name}</p>
-                        <p>${description}</p>
-                        <div class="level-item has-text-centered">
-                            <div class="button-plate go">
-                                Go
-                            </div>
-                            <div class="button-plate cancel">
-                                Cancel
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        `;
+        const dialog_content = UIHelper.to_html(`<div>
+                <p class="title">${name}</p>
+                <p>${description}</p>
+            </div>`);
+        const dialog_buttons = UIHelper.to_html('<div class="level-item has-text-centered"></div>');
+        dialog_buttons.appendChild(UIHelper.button("Go", "go"));
+        dialog_buttons.appendChild(UIHelper.button("Cancel", "cancel"));
+        dialog_content.appendChild(dialog_buttons);
 
-        const btn = UIHelper.to_html(html_button);
-        const dlg = UIHelper.to_html(html_dialog);
+        const btn = UIHelper.language_button(index, name, source, target);
+        const dlg = UIHelper.dialog(dialog_content);
 
-        const self = this;
+        dlg.style.display = 'none';
+        dlg.id = `language-dialog-${index}`;
         dlg.onclick = (e) => {
             const lst = (<HTMLElement>e.target).classList;
             if (lst.contains('button-plate') && lst.contains('go')) {
