@@ -1,10 +1,22 @@
 export class Point {
-    public x: number;
-    public y: number;
+    public readonly x: number;
+    public readonly y: number;
 
     constructor(x: number, y: number) {
         this.x = x;
         this.y = y;
+    }
+}
+
+export class Expander {
+    public readonly header: HTMLElement;
+    public readonly outer: HTMLElement;
+    public readonly content: HTMLElement;
+
+    constructor(outer: HTMLElement, header: HTMLElement, content: HTMLElement) {
+        this.outer = outer;
+        this.header = header;
+        this.content = content;
     }
 }
 
@@ -95,6 +107,38 @@ export class UIHelper {
         inner.appendChild(rcontent);
         outer.appendChild(inner);
         
+        return outer;
+    }
+
+    public static expander(outer_classes: string, content_classes: string): Expander {
+        const outer = this.to_html(`<div class="expander ${outer_classes}"></div>`);
+        const inner = this.to_html(`<div class="expander-inner"></div>`);
+        const header = this.to_html(`<div></div>`);
+        const content = this.to_html(`<div class="expander-content ${content_classes}"></div>`);
+
+        inner.appendChild(header);
+        inner.appendChild(content);
+        outer.appendChild(inner);
+        return new Expander(outer, header, content);
+    }
+
+    public static word_list_item(id:number, group_id: number, source: string, source_hint1: string, target: string): HTMLElement {
+        const s = source + (source_hint1 != null ? '(' + source_hint1 + ')' : '');
+
+        const outer = this.to_html(`<div class="flex-container flex-row"></div>`);
+        const checkbox = this.to_html(`<span class="checkbox"></span>`);
+        const se = this.to_html(`<span></span>`);
+        const te = this.to_html(`<span></span>`);
+
+        checkbox.setAttribute('data-item-id', id.toString());
+        checkbox.setAttribute('data-group-id', group_id.toString());
+        se.innerText = s;
+        te.innerText = target;
+
+        outer.appendChild(checkbox);
+        outer.appendChild(se);
+        outer.appendChild(te);
+
         return outer;
     }
 }

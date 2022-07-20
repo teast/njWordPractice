@@ -142,38 +142,38 @@
 
           <h3>Word group expand/collapse</h3>
           <!-- word group expand/collapse -->
-          <div class="expander word-group" data-target="#expander-example-1">
+          <div class="expander word-group">
             <div class="expander-inner">
               <div class="flex-container flex-row">
-                <span class="checkbox"></span>
+                <span class="checkbox" data-group-id="1"></span>
                 <span class="heading flex-space-2">Example text here</span>
                 <span class="nr-of-words">0/42</span>
               </div>
 
               <div class="expander-content word-list">
                 <div class="flex-container flex-row">
-                  <span class="checkbox"></span>
-                  <span class="word-list-first-item">よろしくお願いします (よろしくおねがいします)</span>
+                  <span class="checkbox" data-item-id="2" data-group-id="1"></span>
+                  <span>よろしくお願いします (よろしくおねがいします)</span>
                   <span>nice to meet you</span>
                 </div>
                 <div class="flex-container flex-row">
                   <span class="checkbox"></span>
-                  <span class="word-list-first-item">よろしくお願いします (よろしくおねがいします)</span>
+                  <span>よろしくお願いします (よろしくおねがいします)</span>
                   <span>nice to meet you</span>
                 </div>
                 <div class="flex-container flex-row">
                   <span class="checkbox"></span>
-                  <span class="word-list-first-item">よろしくお願いします (よろしくおねがいします)</span>
+                  <span>よろしくお願いします (よろしくおねがいします)</span>
                   <span>nice to meet you</span>
                 </div>
                 <div class="flex-container flex-row">
                   <span class="checkbox"></span>
-                  <span class="word-list-first-item">よろしくお願いします (よろしくおねがいします)</span>
+                  <span>よろしくお願いします (よろしくおねがいします)</span>
                   <span>nice to meet you</span>
                 </div>
                 <div class="flex-container flex-row">
                   <span class="checkbox"></span>
-                  <span class="word-list-first-item">よろしくお願いします (よろしくおねがいします)</span>
+                  <span>よろしくお願いします (よろしくおねがいします)</span>
                   <span>nice to meet you</span>
                 </div>
               </div>
@@ -188,17 +188,7 @@
           </div>
           <div id="game-choose-words">
             <p class="subtitle">Choose words</p>
-            <table class="table is-striped is-hoverable is-fullwidth">
-              <tbody id="game-choose-words-tbody">
-                <tr>
-                  <td colspan="2"><input type="checkbox"> Unit 1</td>
-                </tr>
-                <tr>
-                  <td style="width: 5px"></td>
-                  <td><input type="checkbox"> 食べ（たべ</td>
-                </tr>
-              </tbody>
-            </table>
+            <div id="game-choose-words-tbody"></div>
             <div class="buttons">
               <a id="game-choose-words-btn-back" class="button is-link">Go back to choose language</a>
               <a id="game-choose-words-btn-start" class="button is-link">Start</a>

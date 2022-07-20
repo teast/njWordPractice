@@ -1,4 +1,5 @@
 import { ILangConfig, IWordGroup } from "../lang_config";
+import { UIHelper } from "./ui_helper";
 
 export interface IWordChooserGui {
     hide(): void;
@@ -17,71 +18,94 @@ export class WordChooserGui implements IWordChooserGui {
     }
     private _handle_click(ev: MouseEvent): any {
         const target = <HTMLElement>ev.target;
-        if (target.tagName == 'INPUT') {
-            return this._input_clicked(<HTMLInputElement>target);
+
+        if (target.classList.contains('checkbox')) {
+            return this._checkbox_ticked(target);
+        }
+    }
+
+    private _checkbox_ticked(input: HTMLElement): void {
+        const is_item_checkbox = input.parentElement?.parentElement?.classList?.contains('expander-content');
+        if (is_item_checkbox) {
+            return this._update_group_checkbox_from_row_clicked(input);
+        }
+        else {
+            return this._handle_group_checkbox_clicked(input);
+        }
+    }
+
+    private _handle_group_checkbox_clicked(input: HTMLElement) {
+        const checked = !input.hasAttribute('checked');
+        let expander = input.parentElement;
+        while(expander != null) {
+            if (expander.classList.contains('expander')) break;
+            expander = expander.parentElement;
         }
 
-        let t = target.parentElement;
-        while(t) {
-            if (t.tagName == 'TR') {
-                const input = t.querySelector('input');
-                if (input != null) {
-                    input.checked = !input.checked;
-                    return this._input_clicked(input);
-                }
+        if (expander == null) {
+            console.error('Could not find expander from group checkbox click!');
+            return;
+        }
+
+        let content = expander.querySelectorAll('.expander-content .checkbox');
+        for (let i = 0; i < content.length; i++) {
+            if (checked) {
+                content[i].setAttribute('checked', '');
             }
+            else {
+                content[i].removeAttribute('checked');
+            }
+        }
 
-            t = t.parentElement;
+        let nr_of_words = expander.querySelector('.nr-of-words');
+        if (nr_of_words != null) {
+            const ticked = checked ? content.length : 0;
+            (<HTMLElement>nr_of_words).innerText = `${ticked}/${content.length}`;
         }
     }
 
-    private _input_clicked(input: HTMLInputElement): void {
-        let tr = input.parentElement;
-        while(tr) {
-            if (tr.tagName == 'TR') break;
-            tr = tr.parentElement;
+    private _update_group_checkbox_from_row_clicked(input: HTMLElement) {
+        let expander = input.parentElement;
+        while(expander != null) {
+            if (expander.classList.contains('expander')) break;
+            expander = expander.parentElement;
         }
 
-        if (tr.tagName != 'TR') {
-            console.error('Could not find parent tr of checkbox for word selection');
+        if (expander == null) {
+            console.error('Could not find expander from group checkbox click!');
             return;
         }
 
-        if (tr.classList.contains('word-group')) {
-            return this._handle_group_checkbox_clicked(input, <HTMLTableRowElement>tr);
+        let content = expander.querySelectorAll('.expander-content .checkbox');
+        let checked = 0;
+        let unchecked = 0;
+
+        for (let i = 0; i < content.length; i++) {
+            if (content[i] == input) {
+                if (input.hasAttribute('checked')) unchecked++; else checked++;
+            }
+            else {
+                if (content[i].hasAttribute('checked')) checked++; else unchecked++;
+            }
         }
 
-        return this._update_group_checkbox_from_row_clicked(input, <HTMLTableRowElement>tr);
-    }
-
-    private _handle_group_checkbox_clicked(input: HTMLInputElement, group_tr: HTMLTableRowElement) {
-        const id = group_tr.getAttribute('data-id');
-        let tbody = document.getElementById('game-choose-words-tbody');
-        const checked = input.checked;
-
-        const all_inputs = tbody.querySelectorAll('tr[data-group-id="' + id + '"] input[type="checkbox"]');
-        for(let i = 0; i < all_inputs.length; i++) {
-            (<HTMLInputElement>all_inputs[i]).checked = checked;
-        }
-    }
-
-    private _update_group_checkbox_from_row_clicked(input: HTMLInputElement, word_tr: HTMLTableRowElement) {
-        const group_id = word_tr.getAttribute('data-group-id');
-        let tbody = document.getElementById('game-choose-words-tbody');
-        const group_tr = tbody.querySelector('tr[data-id="' + group_id + '"].word-group');
-        if (group_tr == null) {
-            console.error("could not find word group");
+        let group_checkbox = expander.querySelector('.expander-inner .checkbox');
+        if (group_checkbox == null) {
+            console.error('Could not find group checkbox when updating from an item checkbox tick');
             return;
         }
 
-        let all_checked = true;
-        const all_inputs = tbody.querySelectorAll('tr[data-group-id="' + group_id + '"] input[type="checkbox"]');
-        for(let i = 0; i < all_inputs.length; i++) {
-            all_checked = all_checked && (<HTMLInputElement>all_inputs[i]).checked;
-            if (!all_checked) break;
+        if (checked == content.length) {
+            group_checkbox.setAttribute('checked', '');
+        }
+        else {
+            group_checkbox.removeAttribute('checked');
         }
 
-        (<HTMLInputElement>group_tr.querySelector('input[type="checkbox"]')).checked = all_checked;
+        let nr_of_words = expander.querySelector('.nr-of-words');
+        if (nr_of_words != null) {
+            (<HTMLElement>nr_of_words).innerText = `${checked}/${content.length}`;
+        }
     }
 
     public hide(): void {
@@ -106,59 +130,29 @@ export class WordChooserGui implements IWordChooserGui {
         }
 
         for(let i = 0; i < language.groups.length; i++) {
-            this._build_word_group(language.groups[i], i).forEach(tr => tbody.appendChild(tr));
+            tbody.appendChild(this._build_word_group(language.groups[i], i));
         }
 
         document.getElementById('game-choose-words').style.display = 'block';
     }
 
-    private _build_word_group(group: IWordGroup, index: number): HTMLElement[] {
-        const all_trs = [];
-        const tr_group = document.createElement('tr');
-        tr_group.setAttribute('data-id', index.toString());
-        tr_group.className = 'word-group';
-        const td = this._build_td_with_checkbox(group.name, '', true);
-        td.colSpan = 3;
-        tr_group.appendChild(td);
-        all_trs.push(tr_group);
+    private _build_word_group(group: IWordGroup, index: number): HTMLElement {
+        const expander = UIHelper.expander('', 'word-list');
+
+        expander.outer.setAttribute('data-id', index.toString());
+        expander.header.classList.add('flex-container');
+        expander.header.classList.add('flex-row');
+        expander.header.appendChild(UIHelper.to_html(`<span class="checkbox"></span>`));
+        expander.header.appendChild(UIHelper.to_html(`<span class="heading flex-space-2">${group.name}</span>`));
+        expander.header.appendChild(UIHelper.to_html(`<span class="nr-of-words">0/${group.words.length}</span>`));
 
         for(let i = 0; i < group.words.length; i++) {
-            const tr_word = document.createElement('tr');
-            tr_word.className = 'word-row';
-            tr_word.setAttribute('data-id', i.toString());
-            tr_word.setAttribute('data-group-id', index.toString());
-            tr_word.appendChild(this._build_empty_td(5));
-            tr_word.appendChild(this._build_td_with_checkbox(group.words[i].source, group.words[i].source_hint1, true));
-            tr_word.appendChild(this._build_td_with_checkbox(group.words[i].target, '', false));
-            all_trs.push(tr_word);
+            const e = UIHelper.word_list_item(i, index, group.words[i].source, group.words[i].source_hint1, group.words[i].target);
+            e.setAttribute('data-id', i.toString());
+            expander.content.appendChild(e);
         }
-
-        return all_trs;
-    }
-
-    private _build_empty_td(width: number): HTMLTableCellElement {
-        const td = document.createElement('td');
-        td.style.width = width.toString() + "px";
-        return td;
-    }
-
-    private _build_td_with_checkbox(text: string, hint: string, with_checkbox: boolean): HTMLTableCellElement {
-        const td = document.createElement('td');
-        if (with_checkbox) {
-            const input = document.createElement('input');
-            input.type = 'checkbox';
-            td.appendChild(input);
-        }
-        const span = document.createElement('span');
-
-        span.innerText = text;
-        if (hint?.length > 0) {
-            span.innerText += ' (' + hint + ')';
-        }
-
-        td.appendChild(span);
-
-        return td;
+        
+        return expander.outer;
     }
 
     private _handle_start(e: MouseEvent): any {
@@ -166,35 +160,40 @@ export class WordChooserGui implements IWordChooserGui {
 
         const tbody = document.getElementById('game-choose-words-tbody');
         const response: { [group_id: number]: number[] } = [];
-
-        const all_inputs = tbody.querySelectorAll('tr.word-row input[type="checkbox"]:checked');
+        const all_inputs = tbody.querySelectorAll('.expander-content.word-list .checkbox[checked]');
+        console.log('all checkboxes: ', tbody, all_inputs);
         for(let i = 0; i < all_inputs.length; i++) {
-            const tr = this._get_parent_element(<HTMLElement>all_inputs[i], 'tr');
-            if (tr == null) continue;
+            const checkbox = all_inputs[i];
+            
+            if (!checkbox.hasAttribute('data-item-id') || !checkbox.hasAttribute('data-group-id')) {
+                console.error('Missing data-item-id or data-group-id on checkbox. Will ignore: ', checkbox);
+                continue;
+            }
 
-            const group_id = parseInt(tr.getAttribute('data-group-id'));
-            const id = parseInt(tr.getAttribute('data-id'));
-            if (group_id == null || isNaN(group_id) || id == null || isNaN(id)) continue;
+            const item_id = parseInt(checkbox.getAttribute('data-item-id'));
+            const group_id = parseInt(checkbox.getAttribute('data-group-id'));
+
+            if (isNaN(item_id)) {
+                console.error('Expected an number for data-item-id on checkbox (but found: "' + checkbox.getAttribute('data-item-id') + '"). will ignore: ', checkbox);
+                continue;
+            }
+
+            if (isNaN(group_id)) {
+                console.error('Expected an number for data-group-id on checkbox (but found: "' + checkbox.getAttribute('data-group-id') + '"). will ignore: ', checkbox);
+                continue;
+            }
 
             if (response[group_id] == null) response[group_id] = [];
+            response[group_id].push(item_id);
+        }
 
-            response[group_id].push(id);
+        console.log('going to start game with ', response);
+        if (Object.keys(response).length == 0) {
+            console.log('not going to start due to empty array');
+            return;
         }
 
         this._callback_words_picked(response);
-    }
-
-    private _get_parent_element(e: HTMLElement, name: string): HTMLElement|null {
-        let t = e.parentElement;
-        const tname = name.toUpperCase();
-        while(t) {
-            if (t.tagName == tname) {
-                return t;
-            }
-            t = t.parentElement;
-        }
-
-        return null;
     }
 
     private _handle_go_back(e: MouseEvent): any {
