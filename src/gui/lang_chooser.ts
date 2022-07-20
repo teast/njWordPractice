@@ -74,7 +74,7 @@ export class LangChooserGui implements IPreGameGui {
                 <p class="title">${name}</p>
                 <p>${description}</p>
             </div>`);
-        const dialog_buttons = UIHelper.to_html('<div class="level-item has-text-centered"></div>');
+        const dialog_buttons = UIHelper.to_html('<div class="flex-container"></div>');
         dialog_buttons.appendChild(UIHelper.button("Go", "go"));
         dialog_buttons.appendChild(UIHelper.button("Cancel", "cancel"));
         dialog_content.appendChild(dialog_buttons);

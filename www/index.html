@@ -85,7 +85,7 @@
         <div id="design-examples" style="display: none">
           <h3>Button plate examples:</h3>
           <!-- button plate -->
-          <div class="level-item has-text-centered">
+          <div class="flex-container">
             <div class="button-plate">
               this is a button plate
             </div>
@@ -105,7 +105,7 @@
 
          <h3>Button plate + language circle examples:</h3>
          <!-- button plate with language circles -->
-          <div class="level-item has-text-centered">
+          <div class="flex-container">
             <div class="button-plate">
                 <div class="language-circle small fixed-top-right">
                   <span class="language" style="color:#000">？</span>
@@ -129,7 +129,7 @@
               <p class="title">This is an title</p>
               <p class="heading">This is an heading</p>
               <p>This is normal text</p>
-            <div class="level-item has-text-centered">
+            <div class="flex-container">
               <div class="button-plate">
                 OK
               </div>
@@ -184,7 +184,7 @@
 
           <div id="game-choose-language">
             <p class="subtitle">Pick a languages</p>
-            <div class="level-item has-text-centered" id="game-choose-language-tbody"></div>
+            <div class="flex-container" id="game-choose-language-tbody"></div>
           </div>
           <div id="game-choose-words">
             <p class="subtitle">Choose words</p>
@@ -195,44 +195,39 @@
             </div>
           </div>
           <div id="game-board">
-            <div class="level">
-              <div class="level-item has-text-centered">
-                <div class="word-card">
-                  <p id="source-hint1" class="heading">いけ</p>
-                  <p id="source-lang" class="title">行け this is a realy long word that never ends</p>
-                </div>
+            <div class="flex-container flex-center">
+              <div class="word-card">
+                <p id="source-hint1" class="heading">いけ</p>
+                <p id="source-lang" class="title">行け this is a realy long word that never ends</p>
               </div>
             </div>
-            <div class="level">
-              <div class="level-item has-text-centered">
+              <div class="flex-container flex-center">
                 <div class="field">
                   <div class="control">
                     <input id="guess-input" class="input" type="text" placeholder="Input">
                   </div>
                 </div>
-    
               </div>
-            </div>
         </div>
     
         <div id="game-summary" style="display: none;">
-          <div class="level">
-            <div class="level-item has-text-centered">
-              <div class="word-card summary-correct">
-                <p class="heading">Correct</p>
-                <p id="game-summary-success" class="title">42</p>
+          <div class="flex-container flex-around has-text-centered">
+              <div class="flex-container flex-center">
+                <div class="word-card summary-correct">
+                  <p class="heading">Correct</p>
+                  <p id="game-summary-success" class="title">42</p>
+                </div>
+              </div>
+              <div class="flex-container flex-center">
+                <div class="word-card summary-wrong">
+                  <p class="heading">Wrong</p>
+                  <p id="game-summary-wrong" class="title">2</p>
+                </div>
               </div>
             </div>
-            <div class="level-item has-text-centered">
-              <div class="word-card summary-wrong">
-                <p class="heading">Wrong</p>
-                <p id="game-summary-wrong" class="title">2</p>
-              </div>
-            </div>
-          </div>
           <div id="game-summary-word-list">
           </div>
-          <div class="level-item has-text-centered">
+          <div class="flex-container">
             <div class="buttons">
               <a id="game-summary-btn-retry" class="button is-link">Retry</a>
               <a id="game-summary-btn-start" class="button is-link">Back to start</a>
@@ -240,8 +235,6 @@
           </div>
     
         </div>
-
-
 
       </div>
         <script src="js/bundle.js"></script>

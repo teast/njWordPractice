@@ -1,5 +1,127 @@
 @charset "utf-8";
-@import "customstyle.scss";
+
+@import "variables.scss";
+@import "navbar.scss";
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe,
+hr, h1, h2, h3, h4 h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.section, .flex-container {
+    &:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+}
+
+// This is for "choose words" page
+.expander-inner .flex-container {
+    margin-bottom: 0px;
+}
+
+html {
+    background-color: var(--normal-bg);
+    font-size: 16px;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--normal-fg);
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.section {
+    padding: 3rem 1.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .section {
+        padding: 3rem 2rem;
+    }
+}
+
+.has-text-centered {
+    text-align: center !important;
+}
+
+.title {
+    color: var(--normal-title);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.125;
+}
+
+.subtitle {
+    color: var(--normal-subtitle);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.title, .subtitle {
+    word-break: break-word;
+}
+
+.heading {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+
+
+.input {
+    background-color: var(--input-normal-bg);
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--input-normal-fg);
+    display: inline-flex;
+    font-size: 1rem;
+    height: 2.5em;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: calc(0.75em - 1px);
+    padding-right: calc(0.75em - 1px);
+    padding-top: calc(0.5em - 1px);
+    position: relative;
+    vertical-align: top;    
+    box-shadow: inset 0 0.0625em 0.125em var(--input-shadow-color);
+    max-width: 100%;
+    width: 100%;
+    background-color: var(--input-normal-bg);
+    border-color: var(--input-normal-border-color);
+    border-radius: 4px;
+    color: var(--input-normal-fg);
+
+    &::placeholder,
+    &::-moz-placeholder,
+    &:-moz-placeholder,
+    &::-webkit-input-placeholder,
+    &::-ms-input-placeholder,
+    &:-ms-input-placeholder {
+        color: var(--input-normal-placeholder-color);
+    }
+
+    &:focus,
+    &:active {
+        border-color: var(--input-focus-border-color);
+        box-shadow: 0 0 0 0.125rem rgba(72, 95, 199, 0.25);
+    }
+}
 
 // START OF NEW theme
 
@@ -147,11 +269,30 @@
         }
     }
 }
+
 .flex-container {
     display: flex;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    @media screen and (min-width: 769px), print {
+        flex-grow: 1;
+    }
 
     &.flex-between {
         justify-content: space-between;
+        &.with-center {
+            align-items: center;
+        }
+    }
+    &.flex-around {
+        justify-content: space-around;
+    }
+
+    &.flex-center {
+        justify-content: center;
+        align-items: center;
     }
 
     &.flex-row {
@@ -173,6 +314,10 @@
 
     > .flex-space-2 {
         flex-grow: 2;
+    }
+
+    .title, .subtitle {
+        margin-bottom: 0;
     }
 }
 

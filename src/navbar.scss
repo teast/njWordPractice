@@ -1,0 +1,216 @@
+.navbar-item, .navbar-link {
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+    display: block;
+    color: var(--normal-fg);
+}
+
+.navbar {
+    background-color: var(--normal-bg);
+    min-height: 3.25rem;
+    position: relative;
+    z-index: 30;
+
+    &.is-fixed-top {
+        top: 0;
+    }
+
+    &.is-fixed-bottom {
+        bottom: 0;
+    }
+
+    &.is-link {
+        background-color: var(--normal-link-bg);
+        color: var(--normal-link-fg);
+
+        .navbar-brand {
+            a {
+                &.navbar-item {
+                    background-color: var(--normal-link-bg);
+                    color: var(--normal-link-fg);
+                    
+                    &:hover {
+                        background-color: var(--hover-link-bg);
+                        color: var(--hover-link-fg);
+                    }
+                }
+            }
+        }
+    }
+
+    &.is-fixed-top,
+    &.is-fixed-bottom {
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 30;
+    }
+
+    &.is-light-bg {
+        background-color: var(--light-bg);
+    }
+    
+    &.is-danger {
+        background-color: var(--danger-bg);
+        .navbar-burger {
+            color: var(--danger-fg);
+        }
+
+        .navbar-brand {
+            a.navbar-item,
+            .navbar-link {
+                &:focus,
+                &:hover,
+                &.is-active {
+                    background-color: var(--danger-bg);
+                    color: var(--danger-fg);
+                }
+            }
+        }
+
+        .navbar-start {
+            .navbar-item {
+                background-color: var(--danger-bg);
+                color: var(--danger-fg);
+
+                &:hover {
+                    background-color: var(--danger-hover-bg);
+                }
+            }
+        }
+    }
+}
+
+.navbar-item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    img {
+        max-height: 1.75rem;
+    }
+}
+
+.navbar-item.is-expanded {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.navbar-brand, .navbar-tabs {
+    align-items: stretch;
+    display: flex;
+    flex-shrink: 0;
+    min-height: 3.25rem;
+}
+
+.navbar-burger {
+    color: var(--normal-fg);
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    height: 3.25rem;
+    position: relative;
+    width: 3.25rem;
+    margin-left: auto;
+
+    span {
+        background-color: currentColor;
+        display: block;
+        height: 1px;
+        left: calc(50% - 8px);
+        position: absolute;
+        width: 16px;
+        &:nth-child(1) {
+            top: calc(50% - 6px);
+        }
+        &:nth-child(2) {
+            top: calc(50% - 1px);
+        }
+        &:nth-child(3) {
+            top: calc(50% + 4px);
+        }
+    }
+
+    &.is-active {
+        span {
+            &:nth-child(1) {
+                transform: translateY(5px) rotate(45deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: translateY(-5px) rotate(-45deg);
+            }
+        }
+    }
+}
+
+a.navbar-item, .navbar-link {
+    cursor: pointer;
+}
+
+.navbar-menu {
+    display: none;
+}
+
+
+@media screen and (max-width: 1023px) {
+    .navbar.is-fixed-top .navbar-menu, 
+    .navbar.is-fixed-top-touch .navbar-menu {
+        -webkit-overflow-scrolling: touch;
+        max-height: calc(100vh - 3.25rem);
+        overflow: auto;
+    }
+
+    .navbar-brand .navbar-item,
+    .navbar-tabs .navbar-item {
+        align-items: center;
+        display: flex;
+    }
+
+    .navbar-menu {
+        background-color: white;
+        box-shadow: 0 8px 16px rgba(10, 10, 10, 0.10);
+        padding: 0.5rem 0;
+    }
+
+    .navbar-menu.is-active {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .navbar {
+        min-height: 3.25rem;
+    }
+    .navbar, .navbar-menu, .navbar-start, .navbar-end {
+        align-items: stretch;
+        display: flex;
+    }
+
+    .navbar-burger {
+        display: none;
+    }
+
+    .navbar-menu {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .navbar-start {
+        justify-content: flex-start;
+        margin-right: auto;
+    }
+
+    .navbar-end {
+        justify-content: flex-end;
+        margin-left: auto;
+    }
+
+    .navbar-item {
+        align-items: center;
+        display: flex;
+    }
+}

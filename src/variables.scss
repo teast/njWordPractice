@@ -1,0 +1,81 @@
+:root {
+    --background-150: #b5e3fa;
+    --background-125: #afe1f9;
+    --background-100: #a9def9;
+    --foreground-100: #333;
+    --foreground-50: #222;
+    --foreground-25: #111;
+    --action-100: #084d70;
+    --action-75: #063a54;
+    --border-100: #8dd4f7;
+    --border-25: #71c9f5;
+    --danger-100: #881d32;
+    --danger-75: #6b192c;
+    --wrong-100: #faa;
+    --correct-100: #afa;
+}
+
+body.dark {
+    --background-150: #665889;
+    --background-125: #5d507c;
+    --background-100: #554971;
+    --foreground-100: #dcab6b;
+    --foreground-50: #d8a15a;
+    --foreground-25: #d49849;
+    --action-100: #b1a8c7;
+    --action-75: #a69bbf;
+    --border-100: #5d507c;
+    --border-25: #38304b;
+    --danger-100: #881d32;
+    --danger-75: #6b192c;
+    --wrong-100: #881d32;
+    --correct-100: #2d632d;
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light) {
+        --background-150: #665889;
+        --background-125: #5d507c;
+        --background-100: #554971;
+        --foreground-100: #dcab6b;
+        --foreground-50: #d8a15a;
+        --foreground-25: #d49849;
+        --action-100: #b1a8c7;
+        --action-75: #a69bbf;
+        --border-100: #5d507c;
+        --border-25: #38304b;
+        --danger-100: #881d32;
+        --danger-75: #6b192c;
+        --wrong-100: #881d32;
+        --correct-100: #2d632d;
+    }
+}
+
+:root {
+    --normal-bg: var(--background-100);
+    --light-bg: var(--background-125);
+    --normal-fg: var(--foreground-100);
+    --normal-link-bg: var(--action-100);
+    --normal-link-fg: var(--normal-bg);
+    --normal-title: var(--foreground-100);
+    --normal-subtitle: var(--foreground-100);
+    --table-fg: var(--foreground-100);
+    --table-bg: var(--background-100);
+    --table-border: var(--border-100);
+    --table-row-even-bg: var(--background-125);
+    --table-row-even-hover-bg: var(--background-150);
+    --table-hover-bg: var(--background-125);
+    --hover-link-bg: var(--action-75);
+    --hover-link-fg: var(--background-100);
+    --danger-bg: var(--danger-100);
+    --danger-fg: var(--foreground-100);
+    --danger-hover-bg: var(--danger-75);
+    --input-shadow-color: var(--foreground-25);
+    --input-normal-bg: var(--background-100);
+    --input-normal-fg: var(--foreground-50);
+    --input-normal-border-color: var(--border-25);
+    --input-focus-border-color: var(--action-100);
+    --input-normal-placeholder-color: var(--foreground-25);
+    --wrong-color: var(--wrong-100);
+    --correct-color: var(--correct-100);
+}

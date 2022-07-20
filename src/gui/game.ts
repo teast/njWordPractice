@@ -91,20 +91,20 @@ export class GuiGame implements IGuiGame {
 
     create_word_summary_element(word: IGameWordSummary): HTMLElement {
         let outer = <HTMLDivElement>document.createElement('div');
-        outer.className = 'level summary-' + (word.success ? 'correct' : 'wrong');
+        outer.className = 'flex-container flex-between summary-' + (word.success ? 'correct' : 'wrong');
             let center = <HTMLDivElement>document.createElement('div');
-            center.className = 'level-item has-text-centered';
+            center.className = 'flex-container flex-center has-text-centered';
             const card = this._build_word_card(word.word.source, word.word.source_hint1);
             center.appendChild(card);
             const expected = this._build_word_card(word.word.target, 'Expected');
             center.appendChild(card);
         outer.appendChild(center);
             center = <HTMLDivElement>document.createElement('div');
-            center.className = 'level-item has-text-centered';
+            center.className = 'flex-container flex-center has-text-centered';
             center.appendChild(expected);
         outer.appendChild(center);
             center = <HTMLDivElement>document.createElement('div');
-            center.className = 'level-item has-text-centered';
+            center.className = 'flex-container flex-center has-text-centered';
             const inner_center = document.createElement('div');
             for(let i = 0; i < word.guesses.length; i++) {
                 const span = document.createElement('span');
