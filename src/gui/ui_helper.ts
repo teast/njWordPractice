@@ -30,6 +30,12 @@ export class UIHelper {
         return <HTMLElement>template.content.firstChild;
     }
 
+    public static to_all_html(html: string): HTMLCollection {
+        const template = document.createElement('template');
+        template.innerHTML = html.trim();
+        return template.content.children;
+    }
+
     public static fix_undefined(s: string): string {
         return s == undefined ? "" : s;
     }

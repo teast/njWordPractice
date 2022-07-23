@@ -1,21 +1,74 @@
-import { ILangConfig, IWordGroup } from "../lang_config";
-import { UIHelper } from "./ui_helper";
+import { BaseObject, IBaseObject } from "../base_object";
+import { BaseView } from "../base_view";
+import { UIHelper } from "../gui/ui_helper";
+import { Ioc } from "../ioc";
+import { ILangConfig, IWordGroup, IWordPair } from "../lang_config";
+import { Routes } from "../routing";
+import { ILanguagePick } from "./pick_language_view";
 
-export interface IWordChooserGui {
-    hide(): void;
+export class PickWordsView extends BaseView {
+    public static static_type_name: string = 'PickWordsView';
+    public override readonly type_name: string = PickWordsView.static_type_name;
+    override readonly view: string = 'pick_words.html';
+
+    private readonly _gui: IWordChooserGui;
+    private _language: ILangConfig;
+    private _callback_go_back: () => void = null;
+
+    constructor(ioc: Ioc) {
+        super(ioc);
+
+        this._gui = ioc.get<IWordChooserGui>(WordChooserGui.static_type_name);
+    }
+
+    override async show(language: ILanguagePick): Promise<void> {
+        this._gui.show();
+        this._gui.bind_event_go_back(() => {
+            if (this._callback_go_back == null) return;
+            this._callback_go_back();
+        })
+
+        this._language = language.get_config();
+
+        this._gui.bind_words_picked((dictionary: {[group_id: number]: number[]}) => this._handle_words_picked(dictionary));
+        this._gui.display_words(this._language);
+    }
+
+    public bind_event_go_back(callback: () => void): void {
+        this._callback_go_back = callback;
+    }
+
+    private _handle_words_picked(dictionary: {[group_id: number]: number[]}): void {
+        const all_words = [];
+        for(let group_id in dictionary) {
+            for(let i = 0; i < dictionary[group_id].length; i++) {
+                const word_id = dictionary[group_id][i];
+                all_words.push(this._language.groups[group_id].words[word_id]);
+            }
+        }
+
+        this.router.push(Routes.WordGame, all_words);
+    }
+}
+
+export interface IWordChooserGui extends IBaseObject {
     bind_words_picked(callback: (dictionary: {[group_id: number]: number[]}) => void): void;
     display_words(language: ILangConfig): void;
     bind_event_go_back(callback: () => void): void;
+    show():void;
 }
 
-export class WordChooserGui implements IWordChooserGui {
+export class WordChooserGui extends BaseObject implements IWordChooserGui {
+    public static readonly static_type_name = "WordChooserGui";
+    public override readonly type_name = WordChooserGui.static_type_name;
+
     private _callback_words_picked: (dictionary: {[group_id: number]: number[]}) => void = null;
     private _callback_go_back: () => void;
     
     constructor() {
-        const self = this;
-        document.getElementById('game-choose-words-tbody').addEventListener('click', (ev) => this._handle_click(ev));
+        super();
     }
+
     private _handle_click(ev: MouseEvent): any {
         const target = <HTMLElement>ev.target;
 
@@ -108,8 +161,8 @@ export class WordChooserGui implements IWordChooserGui {
         }
     }
 
-    public hide(): void {
-        document.getElementById('game-choose-words').style.display = 'none';
+    public show(): void {
+        document.getElementById('game-choose-words-tbody').addEventListener('click', (ev) => this._handle_click(ev));
         document.getElementById('game-choose-words-btn-back').onclick = (e) => this._handle_go_back(e);
         document.getElementById('game-choose-words-btn-start').onclick = (e) => this._handle_start(e);
     }
@@ -161,7 +214,6 @@ export class WordChooserGui implements IWordChooserGui {
         const tbody = document.getElementById('game-choose-words-tbody');
         const response: { [group_id: number]: number[] } = [];
         const all_inputs = tbody.querySelectorAll('.expander-content.word-list .checkbox[checked]');
-        console.log('all checkboxes: ', tbody, all_inputs);
         for(let i = 0; i < all_inputs.length; i++) {
             const checkbox = all_inputs[i];
             
@@ -187,7 +239,6 @@ export class WordChooserGui implements IWordChooserGui {
             response[group_id].push(item_id);
         }
 
-        console.log('going to start game with ', response);
         if (Object.keys(response).length == 0) {
             console.log('not going to start due to empty array');
             return;

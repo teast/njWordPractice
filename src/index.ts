@@ -1,12 +1,13 @@
 require('./mystyle.scss');
-import { WordGame } from './logic/game';
-import { GameOrchestra } from './game_orchestra';
-import { GuiGame } from './gui/game';
-import { LangChooser } from './logic/lang_chooser';
-import { LangChooserGui } from './gui/lang_chooser';
-import { WordChooser } from './logic/word_chooser';
 import { LangReader } from './lang_reader';
-import { WordChooserGui } from './gui/word_chooser';
+import { Routing } from './routing';
+import { Ioc } from './ioc';
+import { InitView } from './views/init_view';
+import { LangChooserGui, PickLanguageView } from './views/pick_language_view';
+import { PickWordsView, WordChooserGui } from './views/pick_words_view';
+import { GameView, GuiGame } from './views/game_view';
+import { SummaryView } from './views/summary_view';
+import { Storage } from './storage';
 /*
 let reader = new LangReader();
 let langs = reader.Load('dummy');
@@ -78,12 +79,41 @@ document.body.addEventListener('click', (e) => {
   }
 });
 
+
+const storage = new Storage();
+const ioc = new Ioc();
+
+ioc.bind_singleton(storage);
+
+const routing = new Routing(ioc);
+
+ioc.bind_singleton(new LangReader());
+ioc.bind_singleton(new LangChooserGui());
+ioc.bind_singleton(new WordChooserGui());
+ioc.bind_singleton(new GuiGame());
+
+const init = new InitView(ioc);
+const language = new PickLanguageView(ioc);
+const words = new PickWordsView(ioc);
+const game_view = new GameView(ioc);
+const summary = new SummaryView(ioc);
+
+ioc.bind_singleton(routing);
+ioc.bind_singleton(init);
+ioc.bind_singleton(language);
+ioc.bind_singleton(words);
+ioc.bind_singleton(game_view);
+ioc.bind_singleton(summary);
+routing.init().then(() => init.init_done());
+
+/*
 let lang_chooser = new LangChooser(new LangChooserGui(), new LangReader());
 let word_chooser = new WordChooser(new WordChooserGui());
 let game = new WordGame(new GuiGame());
 let orchestra = new GameOrchestra(lang_chooser, word_chooser, game);
 
 orchestra.start_game();
+*/
 
 // Get all "navbar-burger" elements
 var $navbarBurgers = <Array<HTMLElement>>Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

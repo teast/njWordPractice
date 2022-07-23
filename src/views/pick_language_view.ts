@@ -1,28 +1,94 @@
-import { ILanguagePick } from "../logic/lang_chooser";
-import { UIHelper } from "./ui_helper";
+import { BaseObject, IBaseObject } from "../base_object";
+import { BaseView } from "../base_view";
+import { UIHelper } from "../gui/ui_helper";
+import { Ioc } from "../ioc";
+import { ILangConfig } from "../lang_config";
+import { LangReader } from "../lang_reader";
+import { Routes } from "../routing";
 
-export interface IPreGameGui {
-    bind_language_picked(arg0: (index: number) => void): void;
-    display_languages(languages: ILanguagePick[]):void;
-    hide(): void;
+export class PickLanguageView extends BaseView  {
+    public static static_type_name: string = 'PickLanguageView';
+    public override readonly type_name: string = PickLanguageView.static_type_name;
+    override readonly view: string = 'pick_language.html';
+
+    private readonly _reader: LangReader;
+    private _languages: ILanguagePick[] = [];
+    private readonly _gui: ILangChooserGui;
+    
+
+    constructor(ioc: Ioc) {
+        super(ioc);
+        this._gui = ioc.get<ILangChooserGui>(LangChooserGui.static_type_name);
+        this._reader = ioc.get<LangReader>(LangReader.static_type_name);
+    }
+
+    override async show(): Promise<void> {
+        this._gui.show();
+
+        const language = await this._reader.Load('dummy');
+        let jp = new LanguagePick(language);
+        this._languages = [jp];
+
+        this._gui.bind_language_picked((index: number) => this._handle_language_picked(index));
+        this._gui.display_languages(this._languages);
+
+    }
+
+    private _handle_language_picked(index: number): void {
+        if (index < 0 || index > this._languages.length) return;
+        this.router.push(Routes.PickWords, this._languages[index]);
+    }
 }
 
-export class LangChooserGui implements IPreGameGui {
-    private _callback_language_picked: (index: number) => void;
 
+export interface ILangChooserGui extends IBaseObject {
+    bind_language_picked(arg0: (index: number) => void): void;
+    display_languages(languages: ILanguagePick[]):void;
+    show(): void;
+}
+
+export interface ILanguagePick {
+    source: string;
+    target: string;
+    get_config(): ILangConfig,
+}
+
+class LanguagePick implements ILanguagePick {
+    source: string;
+    target: string;
+
+    private readonly _lang: ILangConfig;
+
+    constructor(lang: ILangConfig) {
+        this._lang = lang;
+        this.source = this._lang.source;
+        this.target = this._lang.target;
+    }
+
+    get_config(): ILangConfig {
+        return this._lang;
+    }
+}
+
+export class LangChooserGui extends BaseObject implements ILangChooserGui {
+    public static static_type_name: string = 'LangChooserGui';
+    public override readonly type_name: string = LangChooserGui.static_type_name;    
+
+    private _callback_language_picked: (index: number) => void;
     private _languages: {[lang:string]: string} = {};
 
     constructor() {
-        let tbody = document.getElementById('game-choose-language-tbody');
-        let self = this;
-        tbody.addEventListener('click', (ev) => self._handle_click(ev));
+        super();
+
         this._languages['Japanese'] = '🇯🇵';
         this._languages['English'] = '🇺🇸';
         this._languages['Swedish'] = '🇸🇪';
     }
 
-    public hide(): void {
-        document.getElementById('game-choose-language').style.display = 'none';
+    public show(): void {
+        let tbody = document.getElementById('game-choose-language-tbody');
+        let self = this;
+        tbody.addEventListener('click', (ev) => self._handle_click(ev));
     }
 
     public bind_language_picked(callback: (index: number) => void): void {
