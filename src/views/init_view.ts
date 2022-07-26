@@ -15,6 +15,6 @@ export class InitView extends BaseView  {
 
     init_done() {
         if (this.is_visible)
-            this.router.push(Routes.PickLanguage);
+            this.router.push_and_replace(Routes.PickLanguage);
     }
 }

@@ -1,5 +1,6 @@
 import { BaseObject } from "./base_object";
 import { BaseView } from "./base_view";
+import { TopBar } from "./gui/top_bar";
 import { UIHelper } from "./gui/ui_helper";
 import { Ioc } from "./ioc";
 import { KeyValuePair, Records, RecordsAsync } from "./record";
@@ -22,6 +23,7 @@ export class Routing extends BaseObject {
     public type_name: string = Routing.static_type_name;
 
     private readonly ioc: Ioc;
+    private _event_router_change: Array<() => void> = [];
     private view_stack: Array<KeyValuePair<Routes, BaseView>> = [];
     private view_data: Records<string, string> = new Records<string, string>();
     private routes: RecordsAsync<Routes, BaseView> = new RecordsAsync<Routes, BaseView>(
@@ -42,6 +44,14 @@ export class Routing extends BaseObject {
 
     private _pop_event(ev: PopStateEvent): any {
         console.log('popevent! ', ev);
+    }
+
+    public on_router_change(handler: () => void): void {
+        this._event_router_change.push(handler);
+    }
+
+    public can_back(): boolean {
+        return this.view_stack.length > 1;
     }
 
     public async init(): Promise<void> {
@@ -119,6 +129,8 @@ export class Routing extends BaseObject {
 
         if (replace_view) {
             history.replaceState(null, null, route);
+            if (this.view_stack.length > 0)
+                this.view_stack.pop();
         }
         else {
             history.pushState(null, null, route);
@@ -126,6 +138,22 @@ export class Routing extends BaseObject {
 
         this.view_stack.push(new KeyValuePair(route, view));
         this._render_view(view, old_view?.item2, data);
+        this._notify_all_listeners_for_on_change(view);
+    }
+
+    private _notify_all_listeners_for_on_change(view:BaseView): void  {
+        const topbar = this.ioc.get<TopBar>(TopBar.static_type_name);        
+        if (view.show_back_button)
+            topbar.show_back_button();
+        else
+            topbar.hide_back_button();
+        if (view.show_topbar)
+            topbar.show_topbar();
+        else
+            topbar.hide_topbar();
+
+        for(let i = 0; i < this._event_router_change.length; i++)
+            this._event_router_change[i]();
     }
 
     public async pop(): Promise<boolean> {
@@ -133,6 +161,7 @@ export class Routing extends BaseObject {
         if (result == null) return false;
         await result.item1.hide();
         await this._render_view(result.item2, null, null);
+        this._notify_all_listeners_for_on_change(result.item2);
     }
 
     public async pop_until(route: Routes): Promise<void> {
@@ -153,6 +182,11 @@ export class Routing extends BaseObject {
                 result.item1.hide();
                 is_first = false;
             }
+        }
+
+        // We have done at least one pop
+        if (!is_first && this.view_stack.length > 1) {
+            this._notify_all_listeners_for_on_change(this.view_stack[this.view_stack.length - 1].item2);
         }
     }
 

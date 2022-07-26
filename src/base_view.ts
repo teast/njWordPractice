@@ -16,6 +16,9 @@ export interface IView extends BaseObject {
 export abstract class BaseView extends BaseObject implements IView {
     protected readonly ioc: Ioc;
     abstract readonly view: string;
+    public readonly show_back_button: boolean = true;
+    public readonly show_topbar: boolean = true;
+
     protected get router(): Routing {
         return this.ioc.get(Routing.static_type_name);
     }

@@ -8,6 +8,7 @@ import { PickWordsView, WordChooserGui } from './views/pick_words_view';
 import { GameView, GuiGame } from './views/game_view';
 import { SummaryView } from './views/summary_view';
 import { Storage } from './storage';
+import { TopBar } from './gui/top_bar';
 /*
 let reader = new LangReader();
 let langs = reader.Load('dummy');
@@ -92,13 +93,15 @@ ioc.bind_singleton(new LangChooserGui());
 ioc.bind_singleton(new WordChooserGui());
 ioc.bind_singleton(new GuiGame());
 
+ioc.bind_singleton(routing);
+ioc.bind_singleton(new TopBar(ioc));
+
 const init = new InitView(ioc);
 const language = new PickLanguageView(ioc);
 const words = new PickWordsView(ioc);
 const game_view = new GameView(ioc);
 const summary = new SummaryView(ioc);
 
-ioc.bind_singleton(routing);
 ioc.bind_singleton(init);
 ioc.bind_singleton(language);
 ioc.bind_singleton(words);

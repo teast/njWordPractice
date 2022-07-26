@@ -102,6 +102,27 @@
     min-height: 3.25rem;
 }
 
+.navbar-back {
+    position: relative;
+    font-size: 20px;
+    width: 3.25rem;
+    height: 3.25rem;
+    display: table;
+    color: var(--normal-fg); /* TODO: navigation back foreground color */
+
+    > .arrow {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: bolder;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--hover-link-bg); /* TODO: navigation hover background color */
+        }
+    }
+}
+
 .navbar-burger {
     color: var(--normal-fg);
     appearance: none;
