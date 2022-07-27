@@ -275,7 +275,7 @@ body {
     flex-basis: auto;
     flex-grow: 0;
     flex-shrink: 0;
-
+    
     @media screen and (min-width: 769px), print {
         flex-grow: 1;
     }

@@ -1,5 +1,6 @@
 import { BaseObject } from "./base_object";
 import { BaseView } from "./base_view";
+import { BottomBar } from "./gui/botton_bar";
 import { TopBar } from "./gui/top_bar";
 import { UIHelper } from "./gui/ui_helper";
 import { Ioc } from "./ioc";
@@ -138,10 +139,12 @@ export class Routing extends BaseObject {
 
         this.view_stack.push(new KeyValuePair(route, view));
         this._render_view(view, old_view?.item2, data);
-        this._notify_all_listeners_for_on_change(view);
+        this._update_topbar(view);
+        this._update_bottombar(view);
+        this._notify_all_listeners_for_on_change();
     }
 
-    private _notify_all_listeners_for_on_change(view:BaseView): void  {
+    private _update_topbar(view: BaseView): void {
         const topbar = this.ioc.get<TopBar>(TopBar.static_type_name);        
         if (view.show_back_button)
             topbar.show_back_button();
@@ -151,7 +154,14 @@ export class Routing extends BaseObject {
             topbar.show_topbar();
         else
             topbar.hide_topbar();
+    }
 
+    private _update_bottombar(view: BaseView): void {
+        const bar = this.ioc.get<BottomBar>(BottomBar.static_type_name);        
+        bar.clear();
+    }
+
+    private _notify_all_listeners_for_on_change(): void  {
         for(let i = 0; i < this._event_router_change.length; i++)
             this._event_router_change[i]();
     }
@@ -161,7 +171,9 @@ export class Routing extends BaseObject {
         if (result == null) return false;
         await result.item1.hide();
         await this._render_view(result.item2, null, null);
-        this._notify_all_listeners_for_on_change(result.item2);
+        this._update_topbar(result.item2);
+        this._update_bottombar(result.item2);
+        this._notify_all_listeners_for_on_change();
     }
 
     public async pop_until(route: Routes): Promise<void> {
@@ -186,7 +198,9 @@ export class Routing extends BaseObject {
 
         // We have done at least one pop
         if (!is_first && this.view_stack.length > 1) {
-            this._notify_all_listeners_for_on_change(this.view_stack[this.view_stack.length - 1].item2);
+            this._update_topbar(this.view_stack[this.view_stack.length - 1].item2);
+            this._update_bottombar(this.view_stack[this.view_stack.length - 1].item2);
+            this._notify_all_listeners_for_on_change();
         }
     }
 

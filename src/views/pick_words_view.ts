@@ -1,9 +1,10 @@
 import { BaseObject, IBaseObject } from "../base_object";
 import { BaseView } from "../base_view";
+import { BottomBar } from "../gui/botton_bar";
 import { UIHelper } from "../gui/ui_helper";
 import { Ioc } from "../ioc";
 import { ILangConfig, IWordGroup, IWordPair } from "../lang_config";
-import { Routes } from "../routing";
+import { Routes, Routing } from "../routing";
 import { ILanguagePick } from "./pick_language_view";
 
 export class PickWordsView extends BaseView {
@@ -13,7 +14,6 @@ export class PickWordsView extends BaseView {
 
     private readonly _gui: IWordChooserGui;
     private _language: ILangConfig;
-    private _callback_go_back: () => void = null;
 
     constructor(ioc: Ioc) {
         super(ioc);
@@ -22,20 +22,18 @@ export class PickWordsView extends BaseView {
     }
 
     override async show(language: ILanguagePick): Promise<void> {
-        this._gui.show();
+        const bar = this.ioc.get<BottomBar>(BottomBar.static_type_name);
+        this._gui.show(bar, this.router);
+
+        
         this._gui.bind_event_go_back(() => {
-            if (this._callback_go_back == null) return;
-            this._callback_go_back();
+            this.router.pop();
         })
 
         this._language = language.get_config();
 
         this._gui.bind_words_picked((dictionary: {[group_id: number]: number[]}) => this._handle_words_picked(dictionary));
         this._gui.display_words(this._language);
-    }
-
-    public bind_event_go_back(callback: () => void): void {
-        this._callback_go_back = callback;
     }
 
     private _handle_words_picked(dictionary: {[group_id: number]: number[]}): void {
@@ -55,7 +53,7 @@ export interface IWordChooserGui extends IBaseObject {
     bind_words_picked(callback: (dictionary: {[group_id: number]: number[]}) => void): void;
     display_words(language: ILangConfig): void;
     bind_event_go_back(callback: () => void): void;
-    show():void;
+    show(bar:BottomBar, router: Routing):void;
 }
 
 export class WordChooserGui extends BaseObject implements IWordChooserGui {
@@ -161,10 +159,13 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
         }
     }
 
-    public show(): void {
+    public show(bar:BottomBar, router: Routing): void {
         document.getElementById('game-choose-words-tbody').addEventListener('click', (ev) => this._handle_click(ev));
         document.getElementById('game-choose-words-btn-back').onclick = (e) => this._handle_go_back(e);
         document.getElementById('game-choose-words-btn-start').onclick = (e) => this._handle_start(e);
+
+        bar.add_button('Go back', () => this._callback_go_back());
+        bar.add_button('Start', (e) => this._handle_start(e));
     }
 
     public bind_event_go_back(callback: () => void)

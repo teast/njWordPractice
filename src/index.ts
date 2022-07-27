@@ -9,6 +9,7 @@ import { GameView, GuiGame } from './views/game_view';
 import { SummaryView } from './views/summary_view';
 import { Storage } from './storage';
 import { TopBar } from './gui/top_bar';
+import { BottomBar } from './gui/botton_bar';
 /*
 let reader = new LangReader();
 let langs = reader.Load('dummy');
@@ -95,6 +96,7 @@ ioc.bind_singleton(new GuiGame());
 
 ioc.bind_singleton(routing);
 ioc.bind_singleton(new TopBar(ioc));
+ioc.bind_singleton(new BottomBar());
 
 const init = new InitView(ioc);
 const language = new PickLanguageView(ioc);

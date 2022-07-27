@@ -7,10 +7,13 @@
 }
 
 .navbar {
+    align-items: stretch;
+    display: flex;
     background-color: var(--normal-bg);
     min-height: 3.25rem;
     position: relative;
     z-index: 30;
+    
 
     &.is-fixed-top {
         top: 0;
@@ -77,6 +80,33 @@
                 &:hover {
                     background-color: var(--danger-hover-bg);
                 }
+            }
+        }
+    }
+
+    .button-container {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        ;
+        &:not(:last-child) {
+            padding-right: 5px;
+        }
+        > a {
+            cursor: pointer;
+            flex: auto;
+            max-width: 200px;
+            background-color: #0a0; /* TODO: background color for navbar buttons */
+            color: #5f5; /* TODO: text color for navbar buttons */
+            padding: 10px;
+            border-radius: 0.75rem;
+            border: 2px solid #aca; /* TODO: border color for navbar buttons */
+            width: 100%;
+
+            &:hover {
+                background-color: #060; /* TODO: background color for navbar buttons hover */
+                color: #fff; /* TODO: text color for navbar buttons hover */
+                border: 2px solid #aca; /* TODO: border color for navbar buttons hover */
             }
         }
     }
