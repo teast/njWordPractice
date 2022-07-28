@@ -19,7 +19,6 @@ export class BottomBar extends BaseObject {
             <p class="is-sizesdf-7">${label}</p>
         </a>`);
         */
-       console.log('now using new html!');
        const html = UIHelper.to_html(`
         <div class="button-container">
           <a class="has-text-centered">

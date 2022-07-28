@@ -29,6 +29,9 @@ export abstract class BaseView extends BaseObject implements IView {
         this.ioc = ioc;
     }
 
+    public async go_back_handler(): Promise<void> {
+    }
+
     protected get is_visible(): boolean {
         return this.router.is_visible(this);
     }

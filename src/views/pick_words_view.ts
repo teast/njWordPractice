@@ -21,6 +21,10 @@ export class PickWordsView extends BaseView {
         this._gui = ioc.get<IWordChooserGui>(WordChooserGui.static_type_name);
     }
 
+    public override async go_back_handler(): Promise<void> {
+        await this.router.pop();
+    }
+
     override async show(language: ILanguagePick): Promise<void> {
         const bar = this.ioc.get<BottomBar>(BottomBar.static_type_name);
         this._gui.show(bar, this.router);

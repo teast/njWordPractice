@@ -8,6 +8,7 @@ export class TopBar extends BaseObject {
 
     private readonly router: Routing;
     private back_button_visible: boolean = false;
+    private back_handlers: Array<() => Promise<void>> = [];
 
     constructor(ioc: Ioc) {
         super();
@@ -24,6 +25,25 @@ export class TopBar extends BaseObject {
         else if (this.back_button_visible && this.router.can_back() && !this._back_button_actual_visible()) {
             this._show_back_button();
         }
+    }
+
+    public init() {
+        const el = <HTMLElement>document.querySelector('.navbar-back');
+        const self = this;
+        el.onclick = async () =>  {
+            for(let i = 0; i < self.back_handlers.length; i++) {
+                try {
+                    await self.back_handlers[i]();
+                }
+                catch (e) {
+                    console.error(`Unhandled error in back-button handler (index: ${i}): `, e);
+                }
+            }
+        };
+    }
+
+    public back_button_click(callback: () => Promise<void>) {
+        this.back_handlers.push(callback);
     }
 
     public show_topbar() {

@@ -95,7 +95,8 @@ ioc.bind_singleton(new WordChooserGui());
 ioc.bind_singleton(new GuiGame());
 
 ioc.bind_singleton(routing);
-ioc.bind_singleton(new TopBar(ioc));
+const top_bar = new TopBar(ioc);
+ioc.bind_singleton(top_bar);
 ioc.bind_singleton(new BottomBar());
 
 const init = new InitView(ioc);
@@ -109,16 +110,9 @@ ioc.bind_singleton(language);
 ioc.bind_singleton(words);
 ioc.bind_singleton(game_view);
 ioc.bind_singleton(summary);
+
+top_bar.init();
 routing.init().then(() => init.init_done());
-
-/*
-let lang_chooser = new LangChooser(new LangChooserGui(), new LangReader());
-let word_chooser = new WordChooser(new WordChooserGui());
-let game = new WordGame(new GuiGame());
-let orchestra = new GameOrchestra(lang_chooser, word_chooser, game);
-
-orchestra.start_game();
-*/
 
 // Get all "navbar-burger" elements
 var $navbarBurgers = <Array<HTMLElement>>Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

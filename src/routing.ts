@@ -55,7 +55,24 @@ export class Routing extends BaseObject {
         return this.view_stack.length > 1;
     }
 
+    private _visible_view(): BaseView|null {
+        return this.view_stack.length == 0 ? null : this.view_stack[this.view_stack.length - 1].item2;
+    }
+
     public async init(): Promise<void> {
+        const bar = this.ioc.get<TopBar>(TopBar.static_type_name);
+        const self = this;
+        bar.back_button_click(async () => {
+            const view = self._visible_view();
+            if (view == null) return;
+            try {
+                await view.go_back_handler();
+            }
+            catch(e) {
+                console.error(`unhandled error in go_back handler for view ${view?.type_name}: `, e);
+            }
+        });
+
         switch(window.location.hash.toLowerCase()) {
             case Routes.PickLanguage:
                 return this.push(Routes.PickLanguage);
@@ -183,9 +200,7 @@ export class Routing extends BaseObject {
         while(this.view_stack.length > 0) {
             const view = this.view_stack[this.view_stack.length - 1];
             if (view.item1 == route) {
-                console.log('pop_until, found destination, calling show', result.item2.type_name);
                 await this._render_view(result.item2, null, null);
-                console.log('DONE pop_until, found destination, calling show', result.item2.type_name);
                 break;
             }
             result = await this._pop();
