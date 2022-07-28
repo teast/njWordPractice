@@ -30,6 +30,7 @@ export abstract class BaseView extends BaseObject implements IView {
     }
 
     public async go_back_handler(): Promise<void> {
+        await this.router.pop();
     }
 
     protected get is_visible(): boolean {

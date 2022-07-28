@@ -1,6 +1,5 @@
 import { BaseView } from "../base_view";
 import { IWordPair } from "../lang_config";
-import { Routes } from "../routing";
 import { GameWords } from "./game_view";
 
 export class SummaryView extends BaseView  {
@@ -10,18 +9,7 @@ export class SummaryView extends BaseView  {
     override readonly view: string = 'summary.html';
 
     override async show(words: GameWords[]): Promise<void> {
-        (<HTMLInputElement>document.getElementById('game-summary-btn-retry')).onclick = (e) => this.handle_btn_retry(e);
-        (<HTMLInputElement>document.getElementById('game-summary-btn-start')).onclick = (e) => this.handle_btn_goto_start(e);
         this.show_summary(new GameSummary(words));
-    }
-
-    handle_btn_goto_start(e: MouseEvent): any {
-        this.router.pop_until(Routes.PickLanguage);
-    }
-
-    handle_btn_retry(e: MouseEvent) {
-        //if (this._callback_retry != null) this._callback_retry();
-        console.log('TODO: Handle retry');
     }
 
     public show_summary(summary: IGameSummary): void {

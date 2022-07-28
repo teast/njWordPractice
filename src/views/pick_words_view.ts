@@ -21,19 +21,9 @@ export class PickWordsView extends BaseView {
         this._gui = ioc.get<IWordChooserGui>(WordChooserGui.static_type_name);
     }
 
-    public override async go_back_handler(): Promise<void> {
-        await this.router.pop();
-    }
-
     override async show(language: ILanguagePick): Promise<void> {
         const bar = this.ioc.get<BottomBar>(BottomBar.static_type_name);
         this._gui.show(bar, this.router);
-
-        
-        this._gui.bind_event_go_back(() => {
-            this.router.pop();
-        })
-
         this._language = language.get_config();
 
         this._gui.bind_words_picked((dictionary: {[group_id: number]: number[]}) => this._handle_words_picked(dictionary));
@@ -49,14 +39,13 @@ export class PickWordsView extends BaseView {
             }
         }
 
-        this.router.push(Routes.WordGame, all_words);
+        this.router.push_and_replace(Routes.WordGame, all_words);
     }
 }
 
 export interface IWordChooserGui extends IBaseObject {
     bind_words_picked(callback: (dictionary: {[group_id: number]: number[]}) => void): void;
     display_words(language: ILangConfig): void;
-    bind_event_go_back(callback: () => void): void;
     show(bar:BottomBar, router: Routing):void;
 }
 
@@ -65,7 +54,6 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
     public override readonly type_name = WordChooserGui.static_type_name;
 
     private _callback_words_picked: (dictionary: {[group_id: number]: number[]}) => void = null;
-    private _callback_go_back: () => void;
     
     constructor() {
         super();
@@ -165,16 +153,8 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
 
     public show(bar:BottomBar, router: Routing): void {
         document.getElementById('game-choose-words-tbody').addEventListener('click', (ev) => this._handle_click(ev));
-        document.getElementById('game-choose-words-btn-back').onclick = (e) => this._handle_go_back(e);
-        document.getElementById('game-choose-words-btn-start').onclick = (e) => this._handle_start(e);
 
-        bar.add_button('Go back', () => this._callback_go_back());
         bar.add_button('Start', (e) => this._handle_start(e));
-    }
-
-    public bind_event_go_back(callback: () => void)
-    {
-        this._callback_go_back = callback;
     }
 
     public bind_words_picked(callback: (dictionary: {[group_id: number]: number[]}) => void): void {
@@ -250,10 +230,5 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
         }
 
         this._callback_words_picked(response);
-    }
-
-    private _handle_go_back(e: MouseEvent): any {
-        if (this._callback_go_back == null) return;
-        this._callback_go_back();
     }
 }
