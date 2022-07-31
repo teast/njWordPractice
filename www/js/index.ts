@@ -48,7 +48,7 @@ document.body.addEventListener('click', (e) => {
 
 // Expander handler
 document.body.addEventListener('click', (e) => {
-  var el = <HTMLElement>e.target;
+  var el = <HTMLElement|null>e.target;
 
   while (el != null) {
     if (el.classList.contains('checkbox')) {
@@ -72,11 +72,13 @@ document.body.addEventListener('click', (e) => {
   if (el.classList.contains('expander-inner')) {
     e.stopPropagation();
     const p = el.parentElement;
-    if (p.classList.contains('expanded')) {
-      p.classList.remove('expanded');
-    }
-    else {
-      p.classList.add('expanded');
+    if (p != null) {
+      if (p.classList.contains('expanded')) {
+        p.classList.remove('expanded');
+      }
+      else {
+        p.classList.add('expanded');
+      }
     }
   }
 });
@@ -126,8 +128,10 @@ if ($navbarBurgers.length > 0) {
 
       // Get the target from the "data-target" attribute
       var target = $el.dataset.target;
+      if (target == undefined) return;
       var $target = document.getElementById(target);
-
+      if ($target == null) return;
+      
       // Toggle the class on both the "navbar-burger" and the "navbar-menu"
       $el.classList.toggle('is-active');
       $target.classList.toggle('is-active');

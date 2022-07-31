@@ -1,3 +1,4 @@
+import { resourceUsage } from "process";
 import { BaseObject } from "./base_object";
 import { BaseView } from "./base_view";
 import { BottomBar } from "./gui/botton_bar";
@@ -87,7 +88,7 @@ export class Routing extends BaseObject {
         }
     }
 
-    private async _get_view_data(view_name: string): Promise<HTMLCollection> {
+    private async _get_view_data(view_name: string): Promise<HTMLCollection|null> {
 
         const collection = this.view_data.get(view_name);
         if (collection != null) return UIHelper.to_all_html(collection);
@@ -107,8 +108,9 @@ export class Routing extends BaseObject {
     private async _render_view(view: BaseView, old_view: BaseView|null, data: any): Promise<void> {
         const html = await this._get_view_data(view.view);
         const main_div = document.getElementById('main-div');
+        if (main_div == null) return;
 
-        while(main_div.firstChild)
+        while(main_div.firstChild && main_div.lastChild)
             main_div.removeChild(main_div.lastChild);
 
         if (html == null) {
@@ -146,16 +148,16 @@ export class Routing extends BaseObject {
         const old_view = this.view_stack.length > 0 ? this.view_stack[this.view_stack.length - 1] : null;
 
         if (replace_view) {
-            history.replaceState(null, null, route);
+            history.replaceState(null, '', route);
             if (this.view_stack.length > 0)
                 this.view_stack.pop();
         }
         else {
-            history.pushState(null, null, route);
+            history.pushState(null, '', route);
         }
 
         this.view_stack.push(new KeyValuePair(route, view));
-        this._render_view(view, old_view?.item2, data);
+        this._render_view(view, old_view?.item2 ?? null, data);
         this._update_topbar(view);
         this._update_bottombar(view);
         this._notify_all_listeners_for_on_change();
@@ -191,6 +193,8 @@ export class Routing extends BaseObject {
         this._update_topbar(result.item2);
         this._update_bottombar(result.item2);
         this._notify_all_listeners_for_on_change();
+
+        return true;
     }
 
     public async pop_until(route: Routes): Promise<void> {
@@ -200,13 +204,15 @@ export class Routing extends BaseObject {
         while(this.view_stack.length > 0) {
             const view = this.view_stack[this.view_stack.length - 1];
             if (view.item1 == route) {
-                await this._render_view(result.item2, null, null);
+                if (result != null)
+                    await this._render_view(result.item2, null, null);
                 break;
             }
             result = await this._pop();
 
             if (is_first) {
-                result.item1.hide();
+                if (result != null)
+                    result.item1.hide();
                 is_first = false;
             }
         }
