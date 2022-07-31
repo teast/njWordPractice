@@ -13,8 +13,18 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
     "cordova-android": "^10.1.2",
     "cordova-browser": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-util": "^3.0.8",
+    "gutil": "^1.6.4",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
     "watch": "^1.0.2"
   },
   "cordova": {

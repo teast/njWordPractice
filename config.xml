@@ -9,5 +9,5 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
-    <hook type="before_prepare" src="scripts/webpack.js" />
+    <hook type="before_compile" src="scripts/compile_ts.js" />
 </widget>

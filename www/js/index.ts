@@ -1,4 +1,4 @@
-require('./mystyle.scss');
+//require('./mystyle.scss');
 import { LangReader } from './lang_reader';
 import { Routing } from './routing';
 import { Ioc } from './ioc';

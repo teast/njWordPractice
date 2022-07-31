@@ -26,7 +26,5 @@ node_modules/
 /platforms/
 
 
-www/js/bundle.js
-www/js/bundle.js.map
 www/css/mystyles.css
 www/css/mystyles.css.map
