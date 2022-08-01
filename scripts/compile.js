@@ -18,7 +18,7 @@ module.exports = async function(context) {
             const js_file = root_path + '/js/index.js';
 
             // Compile typescript
-            execSync(`npx tsc -m commonjs --target es5 --sourceMap true ${ts_file}`);
+            execSync(`npx tsc -m commonjs --target es2015 --sourceMap true ${ts_file}`);
 
             // Compile sass
             execSync(`npx sass ${sass_file} ${css_file}`);
