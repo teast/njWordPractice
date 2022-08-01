@@ -13,10 +13,15 @@ module.exports = async function(context) {
     await script_executer(async root_path => {
         return new Promise(resolve => {
             const ts_file = root_path + '/js/index.ts';
+            const sass_file = root_path + '/css/mystyle.scss';
+            const css_file = root_path + '/css/mystyle.css';
             const js_file = root_path + '/js/index.js';
+
             // Compile typescript
             execSync(`npx tsc -m commonjs --target es5 --sourceMap true ${ts_file}`);
 
+            // Compile sass
+            execSync(`npx sass ${sass_file} ${css_file}`);
 
             // Browserify (combine all js files into one)
 
@@ -36,6 +41,7 @@ module.exports = async function(context) {
                 // Remove all files that is not wanted
                 const fs = require('fs');
                 const js_path = path.join(root_path, 'js');
+                const css_path = path.join(root_path, 'css');
                 fs.readdirSync(js_path).map(file => {
                     if (file.toLowerCase() == 'bundle.js' || file.toLowerCase() == 'bundle.js.map') {
                         return;
@@ -44,6 +50,13 @@ module.exports = async function(context) {
                     const path_file = path.join(js_path, file);
                     fs.rmSync(path_file, { recursive: true, force: true });
                 });
+
+                fs.readdirSync(css_path).map(file => {
+                    if (file.endsWith('.scss')) {
+                        const path_file = path.join(css_path, file);
+                        fs.rmSync(path_file, { recursive: true, force: true });
+                    }
+                })
 
                 resolve();
             });
