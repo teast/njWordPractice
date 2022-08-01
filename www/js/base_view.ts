@@ -4,7 +4,7 @@ import { Routing } from "./routing";
 
 export interface IView extends BaseObject {
     /* name of the view to render */
-    readonly view: string;
+    readonly view: string|null;
 
     /* Gets called when the view is pushed to the front and should be rendered */
     show(data: any): void;
@@ -15,7 +15,7 @@ export interface IView extends BaseObject {
 
 export abstract class BaseView extends BaseObject implements IView {
     protected readonly ioc: Ioc;
-    abstract readonly view: string;
+    abstract readonly view: string|null;
     public readonly show_back_button: boolean = true;
     public readonly show_topbar: boolean = true;
 

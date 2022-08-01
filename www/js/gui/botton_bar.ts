@@ -9,7 +9,7 @@ export class BottomBar extends BaseObject {
         const bar = this._get_bottom_bar();
         if (bar == null || bar == undefined) return;
 
-        while(bar.firstChild) bar.removeChild(bar.lastChild);
+        while(bar.firstChild && bar.lastChild) bar.removeChild(bar.lastChild);
     }
 
     public add_button(label:string, on_click: (event: MouseEvent) => void) {

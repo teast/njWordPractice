@@ -94,7 +94,7 @@ export class GameWords {
     private correct: boolean;
     private readonly max_guesses: number;
     public picked: boolean;
-    public correct_guess: string = null;
+    public correct_guess: string|null = null;
 
     constructor(word: IWordPair, max_guesses: number) {
         this.word = word;
@@ -155,8 +155,8 @@ export class GuiGame extends BaseObject implements IGuiGame {
     public override readonly type_name = GuiGame.static_type_name;
 
     private callback_guess: (guess: string) => void;
-    private element_source_hint: HTMLElement;
-    private element_source_lang: HTMLElement;
+    private element_source_hint: HTMLElement|null;
+    private element_source_lang: HTMLElement|null;
     private element_guess_input: HTMLInputElement;
     private is_started: boolean;
 
@@ -202,8 +202,10 @@ export class GuiGame extends BaseObject implements IGuiGame {
     public show_next_word(word: IWordPair, callback: (guess: string) => void): void {
         this.callback_guess = callback;
 
-        this.element_source_hint.textContent = word.source_hint1;
-        this.element_source_lang.textContent = word.source;
+        if (this.element_source_hint != null)
+            this.element_source_hint.textContent = word.source_hint1;
+        if (this.element_source_lang != null)
+            this.element_source_lang.textContent = word.source;
         this.element_guess_input.value = '';
         this.element_guess_input.focus();
     }

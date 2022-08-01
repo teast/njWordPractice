@@ -21,8 +21,8 @@ export class Expander {
 }
 
 export class UIHelper {
-    private static _parent: HTMLElement;
-    private static _previous_display: string;
+    private static _parent: HTMLElement|null;
+    private static _previous_display: string|null;
 
     public static to_html(html: string): HTMLElement {
         const template = document.createElement('template');
@@ -68,7 +68,8 @@ export class UIHelper {
                     (<HTMLElement>elements[i].firstChild).style.display = this._previous_display;
                 }
 
-                this._parent.appendChild(elements[i].firstChild);
+                if (elements[i].firstChild != null)
+                    this._parent.appendChild(elements[i].firstChild!);
             }
     
             elements[i].remove();

@@ -13,11 +13,17 @@ export class SummaryView extends BaseView  {
     }
 
     public show_summary(summary: IGameSummary): void {
-        document.getElementById('game-summary-success').innerText = summary.correct_words.length.toString();
-        document.getElementById('game-summary-wrong').innerText = summary.wrong_words.length.toString();
+        const success = document.getElementById('game-summary-success');
+        const wrong = document.getElementById('game-summary-wrong');
+        if (success)
+            success.innerText = summary.correct_words.length.toString();
+        if (wrong)
+            wrong.innerText = summary.wrong_words.length.toString();
 
         let word_list = document.getElementById('game-summary-word-list');
-        while(word_list.firstChild) {
+        if (!word_list) return;
+
+        while(word_list.firstChild && word_list?.lastChild) {
             word_list.removeChild(word_list.lastChild);
         }
 
@@ -29,7 +35,9 @@ export class SummaryView extends BaseView  {
             word_list.appendChild(this.create_word_summary_element(summary.correct_words[i]));
         }
 
-        document.getElementById('game-summary').style.display = 'block';
+        const game_summary = document.getElementById('game-summary');
+        if (game_summary)
+            game_summary.style.display = 'block';
     }
 
     create_word_summary_element(word: IGameWordSummary): HTMLElement {
@@ -88,7 +96,7 @@ export interface IGameWordSummary {
     word: IWordPair;
     guesses: string[];
     success: boolean;
-    correct_guess: string;
+    correct_guess: string|null;
 }
 
 export interface IGameSummary {
@@ -100,7 +108,7 @@ class GameWordSummary implements IGameWordSummary {
     word: IWordPair;
     guesses: string[];
     success: boolean;
-    correct_guess: string;
+    correct_guess: string|null;
     constructor(word: GameWords) {
         this.word = word.get_word();
         this.success = word.is_success();

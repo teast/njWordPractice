@@ -31,7 +31,7 @@ export class PickWordsView extends BaseView {
     }
 
     private _handle_words_picked(dictionary: {[group_id: number]: number[]}): void {
-        const all_words = [];
+        const all_words: IWordPair[] = [];
         for(let group_id in dictionary) {
             for(let i = 0; i < dictionary[group_id].length; i++) {
                 const word_id = dictionary[group_id][i];
@@ -53,7 +53,7 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
     public static readonly static_type_name = "WordChooserGui";
     public override readonly type_name = WordChooserGui.static_type_name;
 
-    private _callback_words_picked: (dictionary: {[group_id: number]: number[]}) => void = null;
+    private _callback_words_picked: ((dictionary: {[group_id: number]: number[]}) => void)|null = null;
     
     constructor() {
         super();
@@ -152,7 +152,9 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
     }
 
     public show(bar:BottomBar, router: Routing): void {
-        document.getElementById('game-choose-words-tbody').addEventListener('click', (ev) => this._handle_click(ev));
+        const tbody = document.getElementById('game-choose-words-tbody');
+        if (tbody)
+            tbody.addEventListener('click', (ev) => this._handle_click(ev));
 
         bar.add_button('Start', (e) => this._handle_start(e));
     }
@@ -163,7 +165,9 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
 
     public display_words(language: ILangConfig): void {
         let tbody = document.getElementById('game-choose-words-tbody');
-        while(tbody.firstChild) {
+        if (!tbody) return;
+
+        while(tbody.firstChild && tbody?.lastChild) {
             tbody.removeChild(tbody.lastChild);
         }
 
@@ -171,7 +175,9 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
             tbody.appendChild(this._build_word_group(language.groups[i], i));
         }
 
-        document.getElementById('game-choose-words').style.display = 'block';
+        const choose_words = document.getElementById('game-choose-words');
+        if (choose_words)
+            choose_words.style.display = 'block';
     }
 
     private _build_word_group(group: IWordGroup, index: number): HTMLElement {
@@ -197,6 +203,8 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
         if (this._callback_words_picked == null) return;
 
         const tbody = document.getElementById('game-choose-words-tbody');
+        if (tbody == null) return;
+
         const response: { [group_id: number]: number[] } = [];
         const all_inputs = tbody.querySelectorAll('.expander-content.word-list .checkbox[checked]');
         for(let i = 0; i < all_inputs.length; i++) {
@@ -207,8 +215,8 @@ export class WordChooserGui extends BaseObject implements IWordChooserGui {
                 continue;
             }
 
-            const item_id = parseInt(checkbox.getAttribute('data-item-id'));
-            const group_id = parseInt(checkbox.getAttribute('data-group-id'));
+            const item_id = parseInt(checkbox.getAttribute('data-item-id')??'NaN');
+            const group_id = parseInt(checkbox.getAttribute('data-group-id')??'NaN');
 
             if (isNaN(item_id)) {
                 console.error('Expected an number for data-item-id on checkbox (but found: "' + checkbox.getAttribute('data-item-id') + '"). will ignore: ', checkbox);

@@ -87,6 +87,11 @@ export class LangChooserGui extends BaseObject implements ILangChooserGui {
 
     public show(): void {
         let tbody = document.getElementById('game-choose-language-tbody');
+        if (tbody == null) {
+            console.error(`pick_language_view: could not find element with id "game-choose-language-tbody"`);
+            return;
+        }
+
         let self = this;
         tbody.addEventListener('click', (ev) => self._handle_click(ev));
     }
@@ -97,7 +102,12 @@ export class LangChooserGui extends BaseObject implements ILangChooserGui {
 
     public display_languages(languages: ILanguagePick[]): void {
         let tbody = document.getElementById('game-choose-language-tbody');
-        while(tbody.firstChild) {
+        if (tbody == null) {
+            console.error(`pick_language_view: could not find element with id "game-choose-language-tbody"`);
+            return;
+        }
+
+        while(tbody.firstChild && tbody.lastChild) {
             tbody.removeChild(tbody.lastChild);
         }
 
@@ -106,11 +116,13 @@ export class LangChooserGui extends BaseObject implements ILangChooserGui {
            tbody.appendChild(row);
         }
 
-        document.getElementById('game-choose-language').style.display = 'block';
+        const choose_language = document.getElementById('game-choose-language');
+        if (choose_language)
+            choose_language.style.display = 'block';
     }
 
     private _handle_click(ev: MouseEvent) {
-        let t = <HTMLElement>ev.target;
+        let t = <HTMLElement|null>ev.target;
 
         while(t) {
             if (t.tagName == 'DIV' && t.id.startsWith('language-button-')) {
@@ -127,7 +139,9 @@ export class LangChooserGui extends BaseObject implements ILangChooserGui {
         if (isNaN(index) || index == null) return;
         ev.preventDefault();
         ev.stopPropagation();
-        UIHelper.show_dialog(document.getElementById(`language-dialog-${index}`));
+        const dialog_content = document.getElementById(`language-dialog-${index}`);
+        if (dialog_content)
+            UIHelper.show_dialog(dialog_content);
     }
 
     private build_language_row(language: ILanguagePick, index: number): HTMLElement {

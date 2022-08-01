@@ -89,7 +89,6 @@ export class Routing extends BaseObject {
     }
 
     private async _get_view_data(view_name: string): Promise<HTMLCollection|null> {
-
         const collection = this.view_data.get(view_name);
         if (collection != null) return UIHelper.to_all_html(collection);
 
@@ -106,13 +105,16 @@ export class Routing extends BaseObject {
     }
 
     private async _render_view(view: BaseView, old_view: BaseView|null, data: any): Promise<void> {
-        const html = await this._get_view_data(view.view);
         const main_div = document.getElementById('main-div');
         if (main_div == null) return;
 
         while(main_div.firstChild && main_div.lastChild)
             main_div.removeChild(main_div.lastChild);
 
+        // The view wants an empty view content
+        if (view.view == null) return;
+
+        const html = await this._get_view_data(view.view);
         if (html == null) {
             console.error('unknown error. could not fetch view "' + view.view + '"');
             return;
