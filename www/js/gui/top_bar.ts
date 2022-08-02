@@ -48,16 +48,14 @@ export class TopBar extends BaseObject {
 
     public show_topbar() {
         const el = <HTMLElement>document.querySelector('.navbar');
-        if (el == null || el == undefined) return false;
-        
-        return el.style.display != 'block';
+        if (el)
+            el.style.display = 'block';
     }
 
     public hide_topbar() {
-        const el = <HTMLElement>document.querySelector('.navbar');
-        if (el == null || el == undefined) return false;
-        
-        return el.style.display != 'none';
+        const el = <HTMLElement>document.querySelector('.navbar.is-fixed-top');
+        if (el)
+            el.style.display = 'none';
     }
 
     public show_back_button() {

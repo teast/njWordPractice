@@ -5,6 +5,7 @@ import { Ioc } from "../ioc";
 import { ILangConfig } from "../lang_config";
 import { LangReader } from "../lang_reader";
 import { Routes } from "../routing";
+import { DialogView } from "./dialog_view";
 
 export class PickLanguageView extends BaseView  {
     public static static_type_name: string = 'PickLanguageView';
@@ -76,10 +77,12 @@ export class LangChooserGui extends BaseObject implements ILangChooserGui {
 
     private _callback_language_picked: (index: number) => void;
     private _languages: {[lang:string]: string} = {};
+    private readonly _ioc: Ioc;
 
-    constructor() {
+    constructor(ioc: Ioc) {
         super();
 
+        this._ioc = ioc;
         this._languages['Japanese'] = '🇯🇵';
         this._languages['English'] = '🇺🇸';
         this._languages['Swedish'] = '🇸🇪';
@@ -141,7 +144,9 @@ export class LangChooserGui extends BaseObject implements ILangChooserGui {
         ev.stopPropagation();
         const dialog_content = document.getElementById(`language-dialog-${index}`);
         if (dialog_content)
-            UIHelper.show_dialog(dialog_content);
+            DialogView.show_dialog(dialog_content, this._ioc, () => {
+                this._callback_language_picked(index);
+            }, () => {});
     }
 
     private build_language_row(language: ILanguagePick, index: number): HTMLElement {
@@ -150,32 +155,15 @@ export class LangChooserGui extends BaseObject implements ILangChooserGui {
         const source = UIHelper.fix_undefined(language.source in this._languages ? this._languages[language.source] : language.source);
         const target = UIHelper.fix_undefined(language.target in this._languages ? this._languages[language.target] : language.target);
 
-        const dialog_content = UIHelper.to_html(`<div>
+        const dlg = UIHelper.to_html(`<div>
                 <p class="title">${name}</p>
                 <p>${description}</p>
             </div>`);
-        const dialog_buttons = UIHelper.to_html('<div class="flex-container"></div>');
-        dialog_buttons.appendChild(UIHelper.button("Go", "go"));
-        dialog_buttons.appendChild(UIHelper.button("Cancel", "cancel"));
-        dialog_content.appendChild(dialog_buttons);
 
         const btn = UIHelper.language_button(index, name, source, target);
-        const dlg = UIHelper.dialog(dialog_content);
 
         dlg.style.display = 'none';
         dlg.id = `language-dialog-${index}`;
-        dlg.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const lst = (<HTMLElement>e.target).classList;
-            if (lst.contains('button-plate') && lst.contains('go')) {
-                UIHelper.hide_dialog();
-                this._callback_language_picked(index);
-            }
-            else if (lst.contains('button-plate') && lst.contains('cancel')) {
-                UIHelper.hide_dialog();
-            }
-        };
 
         const e = document.createElement('div');
         e.appendChild(btn);

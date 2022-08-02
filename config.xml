@@ -9,5 +9,5 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
-    <hook type="before_compile" src="scripts/compile.js" />
+    <hook type="after_prepare" src="scripts/compile.js" />
 </widget>

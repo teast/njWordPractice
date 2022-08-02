@@ -6,6 +6,7 @@ import { TopBar } from "./gui/top_bar";
 import { UIHelper } from "./gui/ui_helper";
 import { Ioc } from "./ioc";
 import { KeyValuePair, Records, RecordsAsync } from "./record";
+import { DialogView } from "./views/dialog_view";
 import { GameView } from "./views/game_view";
 import { InitView } from "./views/init_view";
 import { PickLanguageView } from "./views/pick_language_view";
@@ -17,7 +18,8 @@ export enum Routes {
     PickLanguage = '#pick-language',
     PickWords = '#pick-words',
     WordGame = '#game',
-    Summary = '#summary'
+    Summary = '#summary',
+    Dialog = '~dialog'
 }
 
 export class Routing extends BaseObject {
@@ -34,6 +36,7 @@ export class Routing extends BaseObject {
         new KeyValuePair(Routes.PickWords, () => Promise.resolve(this.ioc.get<BaseView>(PickWordsView.static_type_name))),
         new KeyValuePair(Routes.WordGame, () => Promise.resolve(this.ioc.get<BaseView>(GameView.static_type_name))),
         new KeyValuePair(Routes.Summary, () => Promise.resolve(this.ioc.get<BaseView>(SummaryView.static_type_name))),
+        new KeyValuePair(Routes.Dialog, () => Promise.resolve(this.ioc.get<BaseView>(DialogView.static_type_name)))
     )
 
     constructor(ioc: Ioc) {
@@ -149,13 +152,23 @@ export class Routing extends BaseObject {
 
         const old_view = this.view_stack.length > 0 ? this.view_stack[this.view_stack.length - 1] : null;
 
+        let route_name = <string>route;
+        if (route_name.startsWith('~')) {
+            if (old_view == null) {
+                route_name = '#' + route_name.substring(1);
+            }
+            else {
+                route_name = (<string>old_view.item1) + '_' + route_name.substring(1);
+            }
+        }
+
         if (replace_view) {
-            history.replaceState(null, '', route);
+            history.replaceState(null, '', route_name);
             if (this.view_stack.length > 0)
                 this.view_stack.pop();
         }
         else {
-            history.pushState(null, '', route);
+            history.pushState(null, '', route_name);
         }
 
         this.view_stack.push(new KeyValuePair(route, view));

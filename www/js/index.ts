@@ -10,6 +10,7 @@ import { SummaryView } from './views/summary_view';
 import { Storage } from './storage';
 import { TopBar } from './gui/top_bar';
 import { BottomBar } from './gui/botton_bar';
+import { DialogView } from './views/dialog_view';
 /*
 let reader = new LangReader();
 let langs = reader.Load('dummy');
@@ -92,7 +93,7 @@ ioc.bind_singleton(storage);
 const routing = new Routing(ioc);
 
 ioc.bind_singleton(new LangReader());
-ioc.bind_singleton(new LangChooserGui());
+ioc.bind_singleton(new LangChooserGui(ioc));
 ioc.bind_singleton(new WordChooserGui());
 ioc.bind_singleton(new GuiGame());
 
@@ -106,12 +107,14 @@ const language = new PickLanguageView(ioc);
 const words = new PickWordsView(ioc);
 const game_view = new GameView(ioc);
 const summary = new SummaryView(ioc);
+const dialog = new DialogView(ioc);
 
 ioc.bind_singleton(init);
 ioc.bind_singleton(language);
 ioc.bind_singleton(words);
 ioc.bind_singleton(game_view);
 ioc.bind_singleton(summary);
+ioc.bind_singleton(dialog);
 
 top_bar.init();
 routing.init().then(() => init.init_done());
